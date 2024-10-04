@@ -8,14 +8,14 @@ HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 # OS settings
 ifeq ($(UNAME_S), Linux)
     # Linux flags
     MLX_DIR = mlx/
     MLX = $(MLX_DIR)libmlx_Linux.a
-    MLX_FLAGS = -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+    MLX_FLAGS = -lmlx -L/usr/lib -lXext -lX11 -lm #-lmlx -lX11 -lXext -lm
 else ifeq ($(UNAME_S), Darwin)
     # macOS flags
     MLX_DIR = mlx/
