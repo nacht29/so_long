@@ -56,7 +56,8 @@ typedef struct s_tile
 }	t_tile;
 
 void	err_and_exit(t_mlx **mlx);
-void	init_map(t_mlx *mlx);
+void	init_map(t_mlx *mlx, char *path);
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
+int		calc_map_size(char *map);
 #endif

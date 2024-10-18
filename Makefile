@@ -68,7 +68,12 @@ clear:
 	@clear
 
 re: clear fclean all
-	./so_long
+
+test:
+	./so_long srcs/main/test.txt
+
+val:
+	valgrind --leak-check=yes  ./so_long srcs/main/test.txt | cat -e
 
 FORCE:
 
