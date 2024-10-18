@@ -8,11 +8,11 @@
 # ifdef __APPLE__
 #  define ESC 0x35
 #  define W 0x0D
-#  define UP 0x7E   
+#  define UP 0x7E
 #  define A 0x00
-#  define LEFT 0x7B    
+#  define LEFT 0x7B
 #  define S 0x01
-#  define DOWN 0x7D   
+#  define DOWN 0x7D
 #  define D 0x02
 #  define RIGHT 0x7C
 # else
@@ -58,6 +58,5 @@ typedef struct s_tile
 void	err_and_exit(t_mlx **mlx);
 void	init_map(t_mlx *mlx);
 int		key_hook(int keycode, t_mlx *mlx);
-int		escape(int keycode, t_mlx *mlx);
-
+int		escape(t_mlx *mlx);
 #endif
