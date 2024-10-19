@@ -1,4 +1,4 @@
-#include "../../includes/so_long.h"
+#include "../includes/so_long.h"
 
 int	key_hook(int keycode, t_mlx *mlx)
 {

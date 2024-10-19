@@ -4,6 +4,7 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <stdlib.h>
+# include <stdio.h>
 
 # ifdef __APPLE__
 #  define ESC 0x35
@@ -55,9 +56,10 @@ typedef struct s_tile
 	int		endian;
 }	t_tile;
 
-void	err_and_exit(t_mlx **mlx);
+void	err_and_exit(t_mlx **mlx, char *err_msg);
 void	init_map(t_mlx *mlx, char *path);
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
-int		calc_map_size(char *map);
+int		calc_x_size(char *map);
+int		calc_y_size(char *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 18:28:32 by yachan            #+#    #+#             */
-/*   Updated: 2024/10/19 01:01:07 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/19 18:31:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 		add_node(&lst[fd], temp_buff);
 		free(temp_buff);
 	}
-	return (next_line);
+	return (ft_strtrim(next_line, "\r\n"));
 }
 
 int	read_to_list(t_node **lst, int fd)

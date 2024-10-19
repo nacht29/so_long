@@ -3,7 +3,7 @@ UNAME_S := $(shell uname -s)
 
 # Default variables
 NAME = so_long
-SRCS = $(wildcard srcs/*/*.c)
+SRCS = $(wildcard srcs/*.c)
 HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
@@ -70,10 +70,10 @@ clear:
 re: clear fclean all
 
 test:
-	./so_long srcs/main/test.txt
+	./so_long srcs/test.txt
 
 val:
-	valgrind --leak-check=yes  ./so_long srcs/main/test.txt | cat -e
+	valgrind --leak-check=yes  ./so_long srcs/test.txt | cat -e
 
 FORCE:
 
