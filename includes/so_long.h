@@ -28,6 +28,9 @@
 #  define RIGHT 65363
 # endif
 
+# define TRUE 1
+# define FALSE 0
+
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
@@ -57,9 +60,18 @@ typedef struct s_tile
 }	t_tile;
 
 void	err_and_exit(t_mlx **mlx, char *err_msg);
-void	init_map(t_mlx *mlx, char *path);
+void	init_map(t_mlx *mlx, char *map);
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
 int		calc_x_size(char *map);
 int		calc_y_size(char *map);
+
+/*MAPS*/
+
+int		calc_x_size(char *map);
+int		calc_y_size(char *map);
+int		map_check_lines(char *map, int size_y);
+int		top_bottom(char *line);
+int		middle(char *line);
+int		is_valid_char(char c);
 #endif

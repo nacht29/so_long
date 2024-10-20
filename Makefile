@@ -3,7 +3,7 @@ UNAME_S := $(shell uname -s)
 
 # Default variables
 NAME = so_long
-SRCS = $(wildcard srcs/*.c)
+SRCS = $(wildcard srcs/*/*.c)
 HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
@@ -70,11 +70,13 @@ clear:
 re: clear fclean all
 
 test:
-	./so_long srcs/test.txt
+	./so_long assets/maps/valids/map_valid_0.ber
 
 val:
-	valgrind --leak-check=yes  ./so_long srcs/test.txt | cat -e
+	valgrind ./so_long assets/maps/valids/map_valid_0.ber
 
+seg:
+	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valids/map_valid_0.ber
 FORCE:
 
 .PHONY: all clean fclean re

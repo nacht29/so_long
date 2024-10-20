@@ -1,4 +1,4 @@
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 int	main(int ac, char *av[])
 {
@@ -17,16 +17,18 @@ int	main(int ac, char *av[])
 	mlx_loop(mlx->mlx_ptr);
 }
 
-void	init_map(t_mlx *mlx, char *path)
+void	init_map(t_mlx *mlx, char *map)
 {
 	mlx->mlx_ptr = mlx_init();
 	if (mlx->mlx_ptr == NULL)
 		err_and_exit(&mlx, "mlx malloc error");
-	mlx->win_x = calc_x_size(path) * 50;
-	mlx->win_y = calc_y_size(path) * 50;
+	mlx->win_x = calc_x_size(map) * 50;
+	mlx->win_y = calc_y_size(map) * 50;
 	if (mlx->win_x <= 0 || mlx->win_y <= 0)
 		err_and_exit(&mlx, "Invalid map dimensions");
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->win_x, mlx->win_x, "so_long");
+	if (map_check_lines(map, mlx->win_y / 50) == FALSE)
+		err_and_exit(&mlx, "Invalid map design");
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->win_x, mlx->win_y, "so_long");
 	if (mlx->win_ptr == NULL)
 		err_and_exit(&mlx, "mlx malloc error");
 	mlx_hook(mlx->win_ptr, 2, 1L<<0, key_hook, mlx);
