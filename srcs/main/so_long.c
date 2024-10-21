@@ -7,7 +7,7 @@ int	main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-		printf("Usage: ./so_long assets/maps/<map_name>.ber");
+		printf("Usage: ./so_long assets/maps/<map_name>.ber\n");
 		exit(EXIT_FAILURE);
 	}
 	mlx = malloc(sizeof(t_mlx));
@@ -26,6 +26,8 @@ void	init_map(t_mlx *mlx, char *map)
 	mlx->win_y = calc_y_size(map) * 50;
 	if (mlx->win_x <= 0 || mlx->win_y <= 0)
 		err_and_exit(&mlx, "Invalid map dimensions");
+	// printf("line %i\n", map_check_lines(map, (mlx->win_y / 50)));
+	// printf("elem %i\n", map_check_elem(map, (mlx->win_y / 50)));
 	if (map_check_lines(map, (mlx->win_y / 50)) == FALSE ||
 			map_check_elem(map, (mlx->win_y / 50)) == FALSE)
 		err_and_exit(&mlx, "Invalid map design");

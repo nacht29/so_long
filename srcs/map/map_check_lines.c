@@ -19,8 +19,7 @@ int		map_check_lines(char *map, int size_y)
 		line = get_next_line(fd);
 		if (ft_strchr(line, ' ') != NULL || ft_strchr(line, '\t') != NULL)
 			return (FALSE);
-		if (top_bottom(row, size_y, line) == FALSE ||
-				middle(row, size_y, line) == FALSE);
+		if (top_bottom(row, size_y, line) == FALSE || middle(row, size_y, line) == FALSE)
 			return (FALSE);
 		free(line);
 	}
