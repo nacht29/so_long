@@ -31,7 +31,7 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_mlx
+typedef struct s_mlx_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -44,6 +44,7 @@ typedef struct s_map
 {
 	int		map_x;
 	int		map_y;
+	int		player_count;
 	int		item_count;
 	int		exit_count;
 }	t_map;
@@ -71,7 +72,5 @@ int		calc_y_size(char *map);
 int		calc_x_size(char *map);
 int		calc_y_size(char *map);
 int		map_check_lines(char *map, int size_y);
-int		top_bottom(char *line);
-int		middle(char *line);
-int		is_valid_char(char c);
+int		map_check_elem(char *map, int size_y);
 #endif

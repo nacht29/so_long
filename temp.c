@@ -72,3 +72,21 @@
 // 	else
 // 		return (FALSE);
 // }
+
+// int main(int ac, char *av[])
+// {
+// 	int		fd;
+// 	char	*line;
+
+// 	if (ac < 2)
+// 		return (1);
+// 	fd = open(av[1], O_RDONLY);
+
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s\n", line);
+// 		if (ft_strchr(line, ' ') != NULL)
+// 			printf("fk\n");
+// 		free(line);
+// 	}
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:15:01 by yachan            #+#    #+#             */
-/*   Updated: 2024/08/25 18:31:20 by yachan           ###   ########.fr       */
+/*   Updated: 2024/10/21 15:16:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 *locates the (first occurence) of char in a str
 *return value: a substr starting from the (first occurence) of char 
-|| NULL if char is not found
+* returns NULL if char is not found
 */
 char	*ft_strchr(const char *s, int c)
 {
