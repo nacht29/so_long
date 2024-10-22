@@ -5,9 +5,10 @@ int	main(int ac, char *av[])
 	t_mlx	*mlx;
 	int		fd;
 
-	if (ac != 2)
+	fd = open(av[1], O_RDONLY);
+	if (ac != 2 || fd <= 0)
 	{
-		printf("Usage: ./so_long assets/maps/<map_name>.ber\n");
+		printf("Usage: ./so_long assets/maps/valids/<map_name>.ber\n");
 		exit(EXIT_FAILURE);
 	}
 	mlx = malloc(sizeof(t_mlx));

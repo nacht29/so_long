@@ -70,10 +70,10 @@ clear:
 re: clear fclean all
 
 test:
-	./so_long assets/maps/valids/map_valid_0.ber
+	./so_long assets/maps/valid/map_valid_0.ber
 
 val:
-	valgrind ./so_long assets/maps/valids/map_valid_0.ber
+	valgrind ./so_long assets/maps/valid/map_valid_0.ber
 
 seg:
 	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valids/map_valid_0.ber
