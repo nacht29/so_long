@@ -1,5 +1,9 @@
 #include "../../includes/so_long.h"
 
+/*
+*calculates the horizontal dimension of the map
+*checks if each line in the .ber file has the same length 
+*/
 int	calc_x_size(char *map)
 {
 	int			fd;
@@ -23,7 +27,10 @@ int	calc_x_size(char *map)
 	}
 	return ((int)fixed_size);
 }
-
+/*
+*calculates the vertical dimension of the map
+*does not perform any checking whatsoever
+*/
 int	calc_y_size(char *map)
 {
 	int		fd;

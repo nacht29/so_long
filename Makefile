@@ -37,9 +37,9 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX)
 	@echo "\n$(YELLOW)Setting DISPLAY ENV...$(RESET)"
-	@echo "export DISPLAY=:0" >> ~/.bashrc
 	@echo "$(GREEN)DISPLAY ENV set to :0$(RESET)"
 	@echo "$(YELLOW)\nCompiling so_long executable...$(RESET)"
+	@# @echo "export DISPLAY=:0" >> ~/.bashrc
 	@$(CC) $(CFLAGS) $(SRCS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(AQUA)so_long executable compiled$(RESET)"
 
@@ -77,6 +77,7 @@ val:
 
 seg:
 	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valids/map_valid_0.ber
+
 FORCE:
 
 .PHONY: all clean fclean re

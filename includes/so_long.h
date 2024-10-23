@@ -73,4 +73,6 @@ int		calc_x_size(char *map);
 int		calc_y_size(char *map);
 int		map_check_lines(char *map, int size_y);
 int		map_check_elem(char *map, int size_y);
+void	count_elements(t_map **elements, char *line);
+void	init_elem_stuct(t_map **elements);
 #endif

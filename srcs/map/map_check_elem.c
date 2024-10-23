@@ -1,14 +1,20 @@
 #include "../../includes/so_long.h"
 
-static void	count_elements(t_map **elements, char *line);
-static void	init_stuct(t_map **elements);
 static int	check_elements(t_map *elements);
 
+/*
+*checks if the map is composed if the right elements:
+0, 1, P, C, E
+*
+*checks if the map contains the right amout of each element:
+P and E = 1, C >= 1
+*/
 int	map_check_elem(char *map, int size_y)
 {
-	int		fd;
-	int		row;
-	char	*line;
+	int				fd;
+	int				row;
+	int				status;
+	char			*line;
 	static t_map	*elements;
 
 	fd = open(map, O_RDONLY);
@@ -17,7 +23,7 @@ int	map_check_elem(char *map, int size_y)
 	elements = malloc(sizeof(t_map));
 	if (elements == NULL)
 		return (FALSE);
-	init_stuct(&elements);
+	init_elem_stuct(&elements);
 	row = 0;
 	while (++row <= size_y)
 	{
@@ -25,17 +31,30 @@ int	map_check_elem(char *map, int size_y)
 		count_elements(&elements, line);
 		free(line);
 	}
-	return (check_elements(elements));
+	status = check_elements(elements);
+	free(elements);
+	return (status);
 }
 
-static void	init_stuct(t_map **elements)
+/*
+*initiates element struct
+*/
+void	init_elem_stuct(t_map **elements)
 {
 	(*elements)->player_count = 0;
 	(*elements)->item_count = 0;
 	(*elements)->exit_count = 0;
 }
 
-static void	count_elements(t_map **elements, char *line)
+/*
+*count the number of each element present in the map
+*
+*will be used in flood_fill to see if exit and collectibles are
+accessible
+*
+*e.g. collectibles reached vs total num of collectibles
+*/
+void	count_elements(t_map **elements, char *line)
 {
 	while (*line)
 	{
@@ -49,6 +68,10 @@ static void	count_elements(t_map **elements, char *line)
 	}
 }
 
+/*
+*checks if the map contains the right amout of each element:
+P and E = 1, C >= 1
+*/
 static int	check_elements(t_map *elements)
 {
 	if (elements->player_count != 1 || elements->exit_count != 1)

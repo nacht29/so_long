@@ -4,6 +4,11 @@ static int	top_bottom(int row, int size_y, char *line);
 static int	middle(int row, int size_y, char *line);
 static int	is_valid_char(char c);
 
+/*
+*checks if the map contains any empty spaces or lines
+*
+*checks if the map is surrounded by walls
+*/
 int		map_check_lines(char *map, int size_y)
 {
 	int		fd;
@@ -28,9 +33,13 @@ int		map_check_lines(char *map, int size_y)
 
 /*
 *checks the top and bottom row of the map
-*checks if the rows comprise of '1' only
+*
+*checks if the rows comprise of '1' only as the top and bottom
+can only be walls
+*
 *the bool return value is formatted that way so that
 the function always returns TRUE unless the map is wrong
+*
 *check written notes for more
 */
 static int	top_bottom(int row, int size_y, char *line)
@@ -45,6 +54,11 @@ static int	top_bottom(int row, int size_y, char *line)
 	return (TRUE);
 }
 
+/*
+*checks if the start and end of the line is walls (1)
+*
+*checks if the line contains invalid characters
+*/
 static int	middle(int row, int size_y, char *line)
 {
 	size_t	i;
@@ -72,6 +86,10 @@ static int	middle(int row, int size_y, char *line)
 	return (TRUE);
 }
 
+/*
+*checks if the char is 0, 1, P, C, E
+*valid: 0, 1, P, C, E
+*/
 static int	is_valid_char(char c)
 {
 	char	*valid_chars;
