@@ -21,7 +21,6 @@ int	check_middle(char *line)
 
 int	count_elements(t_map **elements, char *line)
 {
-	printf("line: %s\n", line);
 	while (*line)
 	{
 		if (*line == 'P')
@@ -34,16 +33,13 @@ int	count_elements(t_map **elements, char *line)
 			return (FALSE);
 		line++;
 	}
-	return (valid_count(*elements));
+	return (TRUE);
 }
 
 int	valid_count(t_map *elements)
 {
 	if (elements->player_count != 1 || elements->exit_count != 1)
-	{
-		printf("p: %i e: %i\n", elements->player_count, elements->exit_count);
 		return (FALSE);
-	}
 	if (elements->item_count < 1)
 		return (FALSE);
 	return (TRUE);
