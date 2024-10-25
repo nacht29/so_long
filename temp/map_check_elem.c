@@ -37,16 +37,6 @@ int	map_check_elem(char *map, int size_y)
 }
 
 /*
-*initiates element struct
-*/
-void	init_elem_stuct(t_map **elements)
-{
-	(*elements)->player_count = 0;
-	(*elements)->item_count = 0;
-	(*elements)->exit_count = 0;
-}
-
-/*
 *count the number of each element present in the map
 *
 *will be used in flood_fill to see if exit and collectibles are

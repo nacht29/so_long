@@ -61,18 +61,23 @@ typedef struct s_tile
 }	t_tile;
 
 void	err_and_exit(t_mlx **mlx, char *err_msg);
-void	init_map(t_mlx *mlx, char *map);
+void	init_map(t_mlx *mlx, char *map, t_map **elements);
+void	init_elem_stuct(t_map **elements, t_mlx **mlx);
+
+/*MAP CHECK*/
+
+int		calc_x_size(char *map);
+int		calc_y_size(char *map);
+int		map_check(char *map, int size_y, t_map **elements);
+int		is_surrounded(int row, int size_y, char *line);
+int		check_elements(int row, int size_y, char *line, t_map **elements);
+int		check_top_bottom(char *line);
+int		check_middle(char *line);
+int		count_elements(t_map **elements, char *line);
+int		valid_count(t_map *elements);
+
+/*KEYBINDS*/
+
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
-int		calc_x_size(char *map);
-int		calc_y_size(char *map);
-
-/*MAPS*/
-
-int		calc_x_size(char *map);
-int		calc_y_size(char *map);
-int		map_check_lines(char *map, int size_y);
-int		map_check_elem(char *map, int size_y);
-void	count_elements(t_map **elements, char *line);
-void	init_elem_stuct(t_map **elements);
 #endif
