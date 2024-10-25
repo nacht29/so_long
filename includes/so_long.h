@@ -68,6 +68,7 @@ void	init_elem_stuct(t_map **elements, t_mlx **mlx);
 
 int		calc_x_size(char *map);
 int		calc_y_size(char *map);
+size_t	get_x(int fd);
 int		map_check(char *map, int size_y, t_map **elements);
 int		is_surrounded(int row, int size_y, char *line);
 int		check_elements(int row, int size_y, char *line, t_map **elements);

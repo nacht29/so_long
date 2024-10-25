@@ -12,7 +12,6 @@ int	main(int ac, char *av[])
 		printf("Usage: ./so_long assets/maps/valid/<map_name>.ber\n");
 		exit(EXIT_FAILURE);
 	}
-	elements = NULL;
 	mlx = malloc(sizeof(t_mlx));
 	if (mlx == NULL)
 		exit(EXIT_FAILURE);

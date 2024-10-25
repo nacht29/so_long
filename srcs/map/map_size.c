@@ -8,20 +8,23 @@ int	calc_x_size(char *map)
 {
 	int			fd;
 	size_t		fixed_size;
+	size_t		len;
 	char		*line;
 	
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (fd);
-	line = get_next_line(fd);
-	fixed_size = ft_strlen(line);
-	free(line);
+	fixed_size = get_x(fd);
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		if (ft_strlen(line) != fixed_size)
+		if (ft_strchr(line, '\n') != NULL)
+			len = ft_strlen(line) - 1;
+		else
+			len = ft_strlen(line);
+		if (len != fixed_size)
 			return (-1);
 		free(line);
 	}
@@ -50,4 +53,17 @@ int	calc_y_size(char *map)
 	line_count++;
 	}
 	return (line_count);
+}
+
+size_t	get_x(int fd)
+{
+	char	*line;
+	size_t	len;
+
+	line = get_next_line(fd);
+	if (ft_strchr(line, '\n') != NULL)
+		len = ft_strlen(line) - 1;
+	else
+		len = ft_strlen(line);
+	return (len);
 }
