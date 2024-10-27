@@ -1,5 +1,12 @@
 #include "../../includes/so_long.h"
 
+/*
+*checks map line by line:
+*-if map contains empty spaces
+*-if map is surrounded by wall
+*-if map contains valid characters only
+*-count and record number of elements
+*/
 int	map_check(char **full_map, int size_y, t_map **map_data)
 {
 	int	row;

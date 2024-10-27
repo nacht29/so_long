@@ -1,5 +1,8 @@
 #include "../../includes/so_long.h"
 
+/*
+*checks if the top and bottom of the map consisst of walls (1) only
+*/
 int	check_top_bottom(char *line)
 {
 	while (*line && *line == '1')
@@ -9,6 +12,10 @@ int	check_top_bottom(char *line)
 	return (FALSE);
 }
 
+/*
+*checks if the middle part of the map is surrounded on both ends
+*checks if the strlen of each line of the map is consistent
+*/
 int	check_middle(char *line)
 {
 	size_t	end;
@@ -19,6 +26,10 @@ int	check_middle(char *line)
 	return (FALSE);
 }
 
+/*
+*record the number of each element
+*returns FALSE if invalid char is spotted
+*/
 int	count_elements(t_map **map_data, char *line)
 {
 	while (*line)
@@ -36,6 +47,12 @@ int	count_elements(t_map **map_data, char *line)
 	return (TRUE);
 }
 
+/*
+*checks if map contains the right amount of elements:
+-P = 1
+-E = 1
+-C >= 1
+*/
 int	valid_count(t_map *map_data)
 {
 	if (map_data->player_count != 1 || map_data->exit_count != 1)

@@ -1,10 +1,15 @@
 #include "../../includes/so_long.h"
 
 /*
-*uses mlx_hook to read keyboard and mouse input
+*malloc mlx_ptr
 *
-*validates a map and generates a window depending on the 
-dimension of the text block in .ber file
+*checks for map dimension :
+*-if dimension is rectangular and map is surrounded
+*
+*checks for map content:
+*-if map contains valid num of valid char
+*
+*uses mlx_hook to read keyboard and mouse input
 */
 void	init_map(t_mlx **mlx, char *map, t_map **map_data)
 {
@@ -39,6 +44,11 @@ void	init_map_data(t_map **map_data, t_mlx **mlx)
 	(*map_data)->exit_count = 0;
 }
 
+/*
+*read from .ber file and store map design in 2D array
+*
+*will be used for map_check and flood_fill
+*/
 char	**read_map(char *map, int size_y)
 {
 	int		fd;
@@ -60,7 +70,10 @@ char	**read_map(char *map, int size_y)
 	full_map[size_y] = NULL;
 	return (full_map);
 }
-
+/*
+*frees 2D array in map_data
+*frees map_data struct
+*/
 void	free_map_data(t_map **map_data)
 {
 	int	i;

@@ -1,5 +1,10 @@
 #include "../../includes/so_long.h"
 
+/*
+*runs flood fill algorithnm to validate map
+*
+*generates a window if map is correct
+*/
 void	init_win(t_mlx **mlx, char *map, t_map **map_data)
 {
 	// flood_fill
