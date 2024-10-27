@@ -6,27 +6,22 @@
 *validates a map and generates a window depending on the 
 dimension of the text block in .ber file
 */
-void	init_map_win(t_mlx *mlx, char *map, t_map **map_data)
+void	init_map(t_mlx **mlx, char *map, t_map **map_data)
 {
-	mlx->mlx_ptr = mlx_init();
-	if (mlx->mlx_ptr == NULL)
-		err_and_exit(&mlx, "mlx malloc error");
-
-	mlx->win_x = calc_x_size(map);
-	mlx->win_y = calc_y_size(map);
-	if (mlx->win_x <= 0 || mlx->win_y <= 0)
-		err_and_exit(&mlx, "Invalid map dimensions");
-
-	init_map_data(map_data, &mlx);
-	(*map_data)->full_map = read_map(map, mlx->win_y);
-	int i = 0;
-	while ((*map_data)->full_map[i] != NULL)
+	(*mlx)->mlx_ptr = mlx_init();
+	if ((*mlx)->mlx_ptr == NULL)
+		err_and_exit(mlx, "mlx malloc error");
+	(*mlx)->win_x = calc_x_size(map);
+	(*mlx)->win_y = calc_y_size(map);
+	if ((*mlx)->win_x <= 0 || (*mlx)->win_y <= 0)
+		err_and_exit(mlx, "Invalid map dimensions");
+	init_map_data(map_data, mlx);
+	(*map_data)->full_map = read_map(map, (*mlx)->win_y);
+	if (map_check((*map_data)->full_map, (*mlx)->win_y, map_data) == FALSE)
 	{
-		printf("%s\n", (*map_data)->full_map[i]);
-		i++;
+		free_map_data(map_data);
+		err_and_exit(mlx, "Invalid map design");
 	}
-	// mlx_hook(mlx->win_ptr, 2, 1L<<0, key_hook, mlx);
-	// mlx_hook(mlx->win_ptr, 17, 0, escape, mlx);
 }
 
 /*
@@ -64,4 +59,18 @@ char	**read_map(char *map, int size_y)
 	}
 	full_map[size_y] = NULL;
 	return (full_map);
+}
+
+void	free_map_data(t_map **map_data)
+{
+	int	i;
+
+	i = 0;
+	while ((*map_data)->full_map[i])
+	{
+		free((*map_data)->full_map[i]);
+		i++;
+	}
+	free((*map_data)->full_map);
+	free(*map_data);
 }

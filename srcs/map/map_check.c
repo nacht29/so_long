@@ -1,29 +1,20 @@
 #include "../../includes/so_long.h"
 
-int	map_check(char *map, int size_y, t_map **elements)
+int	map_check(char **full_map, int size_y, t_map **map_data)
 {
-	int		fd;
-	int		row;
-	char	*line;
-	char	*trim;
+	int	row;
 
-	row = 0;
-	fd = open(map, O_RDONLY);
-	while (++row <= size_y)
+	row = -1;
+	while (++row < size_y)
 	{
-		line = get_next_line(fd);
-		trim = ft_strtrim(line, "\n");
-		free(line);
-		line = trim;
-		if (ft_strchr(line, ' ') != NULL || ft_strchr(line, '\t') != NULL)
+		if (ft_strchr(full_map[row], ' ') != NULL
+			|| ft_strchr(full_map[row], '\t') != NULL)
 			return (FALSE);
-		if (is_surrounded(row, size_y, line) == FALSE)
+		if (is_surrounded(row + 1, size_y, full_map[row]) == FALSE)
 			return (FALSE);
-		if (check_elements(row, size_y, line, elements) == FALSE)
+		if (check_elements(row + 1, size_y, full_map[row], map_data) == FALSE)
 			return (FALSE);
-		free(trim);
 	}
-	return (valid_count(*elements));
 }
 
 int	is_surrounded(int row, int size_y, char *line)
@@ -34,9 +25,9 @@ int	is_surrounded(int row, int size_y, char *line)
 		return (check_middle(line));
 }
 
-int	check_elements(int row, int size_y, char *line, t_map **elements)
+int	check_elements(int row, int size_y, char *line, t_map **map_data)
 {
 	if (row == 1 || row == size_y)
 		return (TRUE);
-	return (count_elements(elements, line));
+	return (count_elements(map_data, line));
 }

@@ -62,21 +62,22 @@ typedef struct s_tile
 }	t_tile;
 
 void	err_and_exit(t_mlx **mlx, char *err_msg);
-void	init_map_win(t_mlx *mlx, char *map, t_map **map_data);
-void	init_map_data(t_map **elements, t_mlx **mlx);
+void	init_map(t_mlx **mlx, char *map, t_map **map_data);
+void	init_win(t_mlx **mlx, char *map, t_map **map_data);
+void	init_map_data(t_map **map_data, t_mlx **mlx);
 
 /*MAP CHECK*/
 
 int		calc_x_size(char *map);
 int		calc_y_size(char *map);
 size_t	get_x(int fd);
-int		map_check(char *map, int size_y, t_map **elements);
+int		map_check(char **full_map, int size_y, t_map **map_data);
 int		is_surrounded(int row, int size_y, char *line);
-int		check_elements(int row, int size_y, char *line, t_map **elements);
 int		check_top_bottom(char *line);
 int		check_middle(char *line);
-int		count_elements(t_map **elements, char *line);
-int		valid_count(t_map *elements);
+int		check_elements(int row, int size_y, char *line, t_map **map_data);
+int		count_elements(t_map **map_data, char *line);
+int		valid_count(t_map *map_data);
 
 /*KEYBINDS*/
 
@@ -84,4 +85,5 @@ int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
 
 char	**read_map(char *map, int size_y);
+void	free_map_data(t_map **map_data);
 #endif

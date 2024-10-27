@@ -15,8 +15,10 @@ int	main(int ac, char *av[])
 	mlx = malloc(sizeof(t_mlx));
 	if (mlx == NULL)
 		exit(EXIT_FAILURE);
-	init_map_win(mlx, av[1], &map_data);
+	init_map(&mlx, av[1], &map_data);
+	init_win(&mlx, av[1], &map_data);
 	mlx_loop(mlx->mlx_ptr);
+	free_map_data(&map_data);
 }
 
 /*

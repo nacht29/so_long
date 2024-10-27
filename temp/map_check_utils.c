@@ -19,16 +19,16 @@ int	check_middle(char *line)
 	return (FALSE);
 }
 
-int	count_elements(t_map **map_data, char *line)
+int	count_elements(t_map **elements, char *line)
 {
 	while (*line)
 	{
 		if (*line == 'P')
-			(*map_data)->player_count++;
+			(*elements)->player_count++;
 		else if (*line == 'C')
-			(*map_data)->item_count++;
+			(*elements)->item_count++;
 		else if (*line == 'E')
-			(*map_data)->exit_count++;
+			(*elements)->exit_count++;
 		else if (*line != '0' && *line != '1')
 			return (FALSE);
 		line++;
@@ -36,11 +36,11 @@ int	count_elements(t_map **map_data, char *line)
 	return (TRUE);
 }
 
-int	valid_count(t_map *map_data)
+int	valid_count(t_map *elements)
 {
-	if (map_data->player_count != 1 || map_data->exit_count != 1)
+	if (elements->player_count != 1 || elements->exit_count != 1)
 		return (FALSE);
-	if (map_data->item_count < 1)
+	if (elements->item_count < 1)
 		return (FALSE);
 	return (TRUE);
 }
