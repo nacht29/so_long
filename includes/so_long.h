@@ -47,6 +47,7 @@ typedef struct s_map
 	int		player_count;
 	int		item_count;
 	int		exit_count;
+	char	**full_map;
 }	t_map;
 
 typedef struct s_tile
@@ -61,8 +62,8 @@ typedef struct s_tile
 }	t_tile;
 
 void	err_and_exit(t_mlx **mlx, char *err_msg);
-void	init_map(t_mlx *mlx, char *map, t_map **elements);
-void	init_elem_stuct(t_map **elements, t_mlx **mlx);
+void	init_map_win(t_mlx *mlx, char *map, t_map **map_data);
+void	init_map_data(t_map **elements, t_mlx **mlx);
 
 /*MAP CHECK*/
 
@@ -81,4 +82,6 @@ int		valid_count(t_map *elements);
 
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
+
+char	**read_map(char *map, int size_y);
 #endif

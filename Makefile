@@ -70,7 +70,7 @@ clear:
 re: clear fclean all
 
 test:
-	make re && ./so_long assets/maps/valid/map_valid_2.ber
+	./so_long assets/maps/valid/map_valid_2.ber
 
 val:
 	valgrind ./so_long assets/maps/valid/map_valid_2.ber

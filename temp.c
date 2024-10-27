@@ -90,3 +90,14 @@
 // 		free(line);
 // 	}
 // }
+
+
+/*
+init_elem_stuct(elements, &mlx);
+	if (map_check(map, (mlx->win_y / 50), elements) == FALSE)
+		err_and_exit(&mlx, "Invalid map design");
+
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->win_x, mlx->win_y, "so_long");
+	if (mlx->win_ptr == NULL)
+		err_and_exit(&mlx, "mlx malloc error");
+*/
