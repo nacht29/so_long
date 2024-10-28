@@ -1,5 +1,7 @@
 #include "../../includes/so_long.h"
 
+static size_t	get_x(int fd);
+
 /*
 *calculates the horizontal dimension of the map
 *checks if each line in the .ber file has the same length 
@@ -55,7 +57,7 @@ int	calc_y_size(char *map)
 	return (line_count);
 }
 
-size_t	get_x(int fd)
+static size_t	get_x(int fd)
 {
 	char	*line;
 	size_t	len;

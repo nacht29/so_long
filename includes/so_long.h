@@ -30,68 +30,126 @@
 
 # define TRUE 1
 # define FALSE 0
+# define WALL '1'
+# define FLOOR '0'
+# define PLAYER 'P'
+# define EXIT 'E'
+# define ITEM 'C'
+# define W_PATH "assets/sprites/textures/Tiles/block.xpm"
+# define F_PATH "assets/sprites/textures/Tiles/midBlocks_02.xpm"
+
 
 typedef struct s_mlx_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img;
-	int		win_x;
-	int		win_y;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				win_x;
+	int				win_y;
+	struct s_map	*map;
+	struct s_player	*player;
 }	t_mlx;
 
 typedef struct s_map
 {
-	int		x;
-	int		y;
-	int		player_count;
-	int		item_count;
-	int		exit_count;
-	char	**full_map;
+	int				map_x;
+	int				map_y;
+	int				player_count;
+	int				item_count;
+	int				collected;
+	int				exit_count;
+	int				moves;
+	char			**full_map;
+	struct s_img	**tiles;
 }	t_map;
 
-typedef struct s_tile
+typedef struct s_img
 {
-	int		tile_x;
-	int		tile_y;
 	void	*img;
 	char	*addr;
-	int		bpp; // bits per pixel
+	int		bpp;
 	int		line_length;
 	int		endian;
-}	t_tile;
+	int		width;
+	int		height;
+}	t_img;
 
-/*INIT MAP*/
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	void	*img;
+	int		moves;
+}	t_player;
+
+typedef struct s_sprites
+{
+	void	*wall;
+	void	*floor;
+	void	*collectible;
+	void	*exit;
+	void	*player;
+}	t_sprites;
+
+/*****************/
+/*GETTING STARTED*/
+/*****************/
+
+/*init mlx*/
+
+void	init_mlx(int ac, char *av[], t_mlx **mlx);
 void	err_and_exit(t_mlx **mlx, char *err_msg);
+
+/****************/
+/*ALL ABOUT MAPS*/
+/****************/
+
+/*init map resources*/
+
 void	init_map(t_mlx **mlx, char *map, t_map **map_data);
-char	**read_map(char *map, int size_y);
-void	free_map_data(t_map **map_data);
 void	init_map_data(t_map **map_data, t_mlx **mlx);
+char	**read_map(char *map, int size_y);
+void	free_mlx_data(t_mlx **mlx);
+void	free_map_data(t_map **map_data);
 
-/*MAP CHECK*/
-
-// map dimension
+/*checking map*/
 
 int		calc_x_size(char *map);
 int		calc_y_size(char *map);
-size_t	get_x(int fd);
-
-//  map is surrounded & correct elements
-
 int		map_check(char **full_map, int size_y, t_map **map_data);
 int		is_surrounded(int row, int size_y, char *line);
+int		check_elements(int row, int size_y, char *line, t_map **map_data);
+
+/*checking utils*/
+
 int		check_top_bottom(char *line);
 int		check_middle(char *line);
-int		check_elements(int row, int size_y, char *line, t_map **map_data);
 int		count_elements(t_map **map_data, char *line);
 int		valid_count(t_map *map_data);
 
-/*KEYBINDS*/
+/*******************/
+/*WINDOW AND IMAGES*/
+/*******************/
+
+/*setting up window*/
+
+void	init_win(t_mlx **mlx, char *map, t_map **map_data);
+int		flood_fill();
+
+/*loading sprites*/
+
+void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites);
+void	load_sprites(t_mlx *mlx, t_sprites **sprites);
+
+/*writing images to window*/
+
+void	write_to_window(t_mlx *mlx, t_map *map_data);
+void	render(t_mlx **mlx, void *img, int wid, int hgt);
+
+/**********/
+/*CONTROLS*/
+/**********/
 
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
 
-/*GAME & WINDOW*/
-
-void	init_win(t_mlx **mlx, char *map, t_map **map_data);
 #endif
