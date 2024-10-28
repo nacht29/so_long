@@ -42,8 +42,8 @@ typedef struct s_mlx_data
 
 typedef struct s_map
 {
-	int		map_x;
-	int		map_y;
+	int		x;
+	int		y;
 	int		player_count;
 	int		item_count;
 	int		exit_count;
@@ -61,16 +61,23 @@ typedef struct s_tile
 	int		endian;
 }	t_tile;
 
+/*INIT MAP*/
 void	err_and_exit(t_mlx **mlx, char *err_msg);
 void	init_map(t_mlx **mlx, char *map, t_map **map_data);
-void	init_win(t_mlx **mlx, char *map, t_map **map_data);
+char	**read_map(char *map, int size_y);
+void	free_map_data(t_map **map_data);
 void	init_map_data(t_map **map_data, t_mlx **mlx);
 
 /*MAP CHECK*/
 
+// map dimension
+
 int		calc_x_size(char *map);
 int		calc_y_size(char *map);
 size_t	get_x(int fd);
+
+//  map is surrounded & correct elements
+
 int		map_check(char **full_map, int size_y, t_map **map_data);
 int		is_surrounded(int row, int size_y, char *line);
 int		check_top_bottom(char *line);
@@ -84,6 +91,7 @@ int		valid_count(t_map *map_data);
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
 
-char	**read_map(char *map, int size_y);
-void	free_map_data(t_map **map_data);
+/*GAME & WINDOW*/
+
+void	init_win(t_mlx **mlx, char *map, t_map **map_data);
 #endif

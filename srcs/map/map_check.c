@@ -22,6 +22,7 @@ int	map_check(char **full_map, int size_y, t_map **map_data)
 		if (check_elements(row + 1, size_y, full_map[row], map_data) == FALSE)
 			return (FALSE);
 	}
+	return (valid_count(*map_data));
 }
 
 int	is_surrounded(int row, int size_y, char *line)
