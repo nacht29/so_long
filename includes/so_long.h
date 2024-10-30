@@ -154,8 +154,8 @@ void	render(t_mlx *mlx, void *img, int wid, int hgt);
 /*CONTROLS*/
 /**********/
 
-int		key_hook(int keycode, t_mlx **mlx);
-int		escape(t_mlx **mlx);
+int		key_hook(int keycode, t_mlx *mlx);
+int		escape(t_mlx *mlx);
 
 
 void	game(t_mlx **mlx, t_map **map_data);

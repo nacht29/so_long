@@ -16,8 +16,8 @@ void	init_win(t_mlx **mlx, char *map, t_map **map_data)
 		free_map_data(map_data);
 		err_and_exit(mlx, "mlx window malloc error");
 	}
-	mlx_hook((*mlx)->win_ptr, 2, 1L<<0, key_hook, mlx);
-	mlx_hook((*mlx)->win_ptr, 17, 0, escape, mlx);
+	mlx_hook((*mlx)->win_ptr, 2, 1L<<0, key_hook, *mlx);
+	mlx_hook((*mlx)->win_ptr, 17, 0, escape, *mlx);
 }
 
 int	flood_fill()

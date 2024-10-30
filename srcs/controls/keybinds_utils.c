@@ -7,13 +7,12 @@
 *
 exits programme with code success
 */
-int	escape(t_mlx **mlx)
+int	escape(t_mlx *mlx)
 {
-	mlx_destroy_window((*mlx)->mlx_ptr, (*mlx)->win_ptr);
-	mlx_destroy_display((*mlx)->mlx_ptr);
-	free((*mlx)->mlx_ptr);
-	free(*mlx);
-	(*mlx)->mlx_ptr = NULL;
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	mlx_destroy_display(mlx->mlx_ptr);
+	free(mlx->mlx_ptr);
+	free(mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
