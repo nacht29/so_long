@@ -8,10 +8,10 @@ static size_t	get_x(int fd);
 */
 int	calc_x_size(char *map)
 {
-	int			fd;
-	size_t		fixed_size;
-	size_t		len;
-	char		*line;
+	int		fd;
+	size_t	fixed_size;
+	size_t	len;
+	char	*line;
 	
 	fd = open(map, O_RDONLY);
 	if (fd < 0)

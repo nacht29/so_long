@@ -3,8 +3,8 @@
 
 void	init_game(t_mlx *mlx, t_map *map_data, t_sprites *sprites)
 {
-	int			row;
-	int			col;
+	int	row;
+	int	col;
 	
 	row = -1;
 	while (map_data->full_map[++row])
@@ -26,11 +26,11 @@ void	init_game(t_mlx *mlx, t_map *map_data, t_sprites *sprites)
 	}	
 }
 
-void    render(t_mlx *mlx, void *img, int wid, int hgt)
+void	render(t_mlx *mlx, void *img, int wid, int hgt)
 {
-    mlx_put_image_to_window(mlx->mlx_ptr,
-                            mlx->win_ptr,
-                            img, wid * 32,
-                            hgt * 32);
+	mlx_put_image_to_window(mlx->mlx_ptr,
+							mlx->win_ptr,
+							img, wid * 32,
+							hgt * 32);
 }
 
