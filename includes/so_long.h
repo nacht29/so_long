@@ -37,8 +37,10 @@
 # define ITEM 'C'
 # define W_PATH "assets/sprites/textures/Tiles/block.xpm"
 # define F_PATH "assets/sprites/textures/Tiles/midBlocks_02.xpm"
-# define E0_PATH "assets/sprites/textures/Tiles/exit_close.xpm"
-# define E1_PATH "assets/sprites/textures/Tiles/exit_open.xpm"
+# define C_PATH "assets/sprites/textures/Items/star_00.xpm"
+# define E0_PATH "assets/sprites/textures/Exit/exit_close.xpm"
+# define E1_PATH "assets/sprites/textures/Exit/exit_open.xpm"
+# define P0_PATH "assets/sprites/textures/Player/idle_00.xpm"
 
 typedef struct s_mlx_data
 {
@@ -86,7 +88,7 @@ typedef struct s_sprites
 {
 	void	*wall;
 	void	*floor;
-	void	*collectible;
+	void	*item;
 	void	*exit_open;
 	void	*exit_close;
 	void	*player;
@@ -144,15 +146,16 @@ void	load_sprites(t_mlx **mlx, t_sprites **sprites);
 
 /*writing images to window*/
 
-void	write_to_window(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
+// void	write_to_window(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
+void	init_game(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
 void	render(t_mlx *mlx, void *img, int wid, int hgt);
 
 /**********/
 /*CONTROLS*/
 /**********/
 
-int		key_hook(int keycode, t_mlx *mlx);
-int		escape(t_mlx *mlx);
+int		key_hook(int keycode, t_mlx **mlx);
+int		escape(t_mlx **mlx);
 
 
 void	game(t_mlx **mlx, t_map **map_data);
