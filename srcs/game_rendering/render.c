@@ -1,7 +1,9 @@
 #include "../../includes/so_long.h"
 
-
-void	init_game(t_mlx *mlx, t_map *map_data, t_sprites *sprites)
+/*
+*generate map at the start of the game
+*/
+void	write_img_to_win(t_mlx *mlx, t_map *map_data, t_sprites *sprites)
 {
 	int	row;
 	int	col;
@@ -26,6 +28,10 @@ void	init_game(t_mlx *mlx, t_map *map_data, t_sprites *sprites)
 	}	
 }
 
+/*
+*simplifies process of putting img to the window
+*runs mlx_put_image_to_window
+*/
 void	render(t_mlx *mlx, void *img, int wid, int hgt)
 {
 	mlx_put_image_to_window(mlx->mlx_ptr,

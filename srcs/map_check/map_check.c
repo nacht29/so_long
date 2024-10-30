@@ -33,6 +33,15 @@ int	is_surrounded(int row, int size_y, char *line)
 		return (check_middle(line));
 }
 
+/*
+*count elements will return FALSE if any invalid characters is found
+*
+*it is not to be confused with valid_count, as valid_count is the final check
+which verifies if a map contains the right amount of each element
+*
+*count_elemnts only checks for invalid characters and records the number of
+elements contained in the map
+*/
 int	check_elements(int row, int size_y, char *line, t_map **map_data)
 {
 	if (row == 1 || row == size_y)

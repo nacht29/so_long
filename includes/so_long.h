@@ -146,9 +146,9 @@ void	load_sprites(t_mlx **mlx, t_sprites **sprites);
 
 /*writing images to window*/
 
-// void	write_to_window(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
-void	init_game(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
+void	write_img_to_win(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
 void	render(t_mlx *mlx, void *img, int wid, int hgt);
+// void	write_to_window(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
 
 /**********/
 /*CONTROLS*/
@@ -157,6 +157,9 @@ void	render(t_mlx *mlx, void *img, int wid, int hgt);
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
 
+/***********/
+/*MAIN GAME*/
+/***********/
 
 void	game(t_mlx **mlx, t_map **map_data);
 #endif

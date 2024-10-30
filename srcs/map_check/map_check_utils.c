@@ -14,7 +14,6 @@ int	check_top_bottom(char *line)
 
 /*
 *checks if the middle part of the map is surrounded on both ends
-*checks if the strlen of each line of the map is consistent
 */
 int	check_middle(char *line)
 {
@@ -48,10 +47,14 @@ int	count_elements(t_map **map_data, char *line)
 }
 
 /*
-*checks if map contains the right amount of elements:
+*checks if map contains the right amount of each element
 -P = 1
 -E = 1
 -C >= 1
+*
+*not to be confused with count_elements, as the function mainly records
+the number of each element found in the map, and returns FALSE if an 
+invalid char is found
 */
 int	valid_count(t_map *map_data)
 {

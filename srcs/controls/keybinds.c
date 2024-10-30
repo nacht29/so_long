@@ -10,6 +10,5 @@ int	key_hook(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
 		escape(mlx);
-	// add movement keys
 	return (0);
 }

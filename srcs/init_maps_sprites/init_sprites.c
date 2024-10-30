@@ -1,5 +1,8 @@
 #include "../../includes/so_long.h"
 
+/*
+*malloc a struct to store all sprites data (img ptrs)
+*/
 void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites)
 {
 	*sprites = malloc(sizeof(t_sprites));
@@ -12,6 +15,9 @@ void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites)
 	load_sprites(mlx, sprites);
 }
 
+/*
+*converts xpm file to img ptr to be used readily
+*/
 void	load_sprites(t_mlx **mlx, t_sprites **sprites)
 {
 	int	width;
