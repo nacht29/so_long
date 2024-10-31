@@ -7,8 +7,7 @@ int	main(int ac, char *av[])
 
 	init_mlx(ac, av, &mlx);
 	init_map(&mlx, av[1], &map_data);
-	init_win(&mlx, av[1], &map_data);
-	game(&mlx, &map_data);
+	game(&mlx, av[1], &map_data);
 	mlx_loop(mlx->mlx_ptr);
 	free_map_data(&map_data);
 }

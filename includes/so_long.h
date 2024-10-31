@@ -48,7 +48,7 @@ typedef struct s_mlx_data
 	void			*win_ptr;
 	int				win_x;
 	int				win_y;
-	struct s_map	*map;
+	struct s_map	*map_data;
 	struct s_player	*player;
 }	t_mlx;
 
@@ -136,7 +136,7 @@ int		valid_count(t_map *map_data);
 
 /*setting up window*/
 
-void	init_win(t_mlx **mlx, char *map, t_map **map_data);
+void	init_win_key(t_mlx **mlx, char *map, t_map **map_data);
 int		flood_fill();
 
 /*loading sprites*/
@@ -161,5 +161,5 @@ int		escape(t_mlx *mlx);
 /*MAIN GAME*/
 /***********/
 
-void	game(t_mlx **mlx, t_map **map_data);
+void	game(t_mlx **mlx, char *map, t_map **map_data);
 #endif
