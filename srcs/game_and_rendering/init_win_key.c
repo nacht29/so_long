@@ -4,6 +4,8 @@
 *runs flood fill algorithnm to validate map
 *
 *generates a window if map is correct
+*
+*defines keybinds and controls in key_hook function
 */
 void	init_win_key(t_mlx **mlx, char *map, t_map **map_data)
 {
