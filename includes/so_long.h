@@ -35,12 +35,19 @@
 # define PLAYER 'P'
 # define EXIT 'E'
 # define ITEM 'C'
+# define L 110
+# define R 120
+# define U 130
+# define I_D 140
 # define W_PATH "assets/sprites/textures/Tiles/block.xpm"
 # define F_PATH "assets/sprites/textures/Tiles/midBlocks_02.xpm"
 # define C_PATH "assets/sprites/textures/Items/star_00.xpm"
 # define E0_PATH "assets/sprites/textures/Exit/exit_close.xpm"
 # define E1_PATH "assets/sprites/textures/Exit/exit_open.xpm"
-# define P0_PATH "assets/sprites/textures/Player/idle_00.xpm"
+# define P0_PATH "assets/sprites/textures/Player/walkDown_00.xpm"
+# define PL_PATH "assets/sprites/textures/Player/walkLeft_00.xpm"
+# define PR_PATH "assets/sprites/textures/Player/walkRight_00.xpm"
+# define PU_PATH "assets/sprites/textures/Player/walkUP_00.xpm"
 
 typedef struct s_mlx_data
 {
@@ -79,9 +86,8 @@ typedef struct s_img
 
 typedef struct s_player
 {
-	int		x;
-	int		y;
 	void	*idle;
+	void	*up;
 	void	*left;
 	void	*right;
 	int		moves;
@@ -89,12 +95,12 @@ typedef struct s_player
 
 typedef struct s_sprites
 {
-	void	*wall;
-	void	*floor;
-	void	*item;
-	void	*exit_open;
-	void	*exit_close;
-	void	*player;
+	void			*wall;
+	void			*floor;
+	void			*item;
+	void			*exit_open;
+	void			*exit_close;
+	struct s_player	*player;
 }	t_sprites;
 
 /*****************/
@@ -146,10 +152,12 @@ int		flood_fill();
 
 void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites);
 void	load_sprites(t_mlx **mlx, t_sprites **sprites);
+void	load_player_sprites(t_mlx **mlx, t_sprites **sprites);
 
 /*writing images to window*/
 
-void	write_img_to_win(t_mlx *mlx, char **full_map, t_sprites *sprites);
+void	write_img_to_win(t_mlx *mlx, char **full_map, t_sprites *sprites, int side);
+void	player_movement(t_mlx *mlx, t_sprites *sprites, int col, int row, int side);
 void	render(t_mlx *mlx, void *img, int wid, int hgt);
 // void	write_to_window(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
 

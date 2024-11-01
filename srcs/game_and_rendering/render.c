@@ -3,7 +3,7 @@
 /*
 *generate map at the start of the game
 */
-void	write_img_to_win(t_mlx *mlx, char **full_map, t_sprites *sprites)
+void	write_img_to_win(t_mlx *mlx, char **full_map, t_sprites *sprites, int side)
 {
 	int	row;
 	int	col;
@@ -23,9 +23,21 @@ void	write_img_to_win(t_mlx *mlx, char **full_map, t_sprites *sprites)
 			else if (full_map[row][col] == 'E')
 				render(mlx, sprites->exit_open, col, row);
 			else if (full_map[row][col] == 'P')
-				render(mlx, sprites->player, col, row);
+				player_movement(mlx, sprites, col, row, side);
 		}
 	}	
+}
+
+void	player_movement(t_mlx *mlx, t_sprites *sprites, int col, int row, int side)
+{
+	if (side == L)
+		render(mlx, sprites->player->left, col, row);
+	else if (side == R)
+		render(mlx, sprites->player->right, col, row);
+	else if (side == U)
+		render(mlx, sprites->player->up, col, row);
+	else if (side == I_D)
+		render(mlx, sprites->player->idle, col, row);
 }
 
 /*

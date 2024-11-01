@@ -21,9 +21,9 @@ int	key_hook(int keycode, t_mlx *mlx)
 		move_up(mlx, &player_loc);
 	else if (keycode == DOWN || keycode == S)
 		move_down(mlx, &player_loc);
-	else if (keycode == LEFT || keycode == 'A')
+	else if (keycode == LEFT || keycode == A)
 		move_left(mlx, &player_loc);
-	else if (keycode == RIGHT || keycode == 'D')
+	else if (keycode == RIGHT || keycode == D)
 		move_right(mlx, &player_loc);
 	free(player_loc);
 	return (0);

@@ -15,6 +15,7 @@ void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites)
 		err_and_exit(mlx, "sprites malloc error");
 	}
 	load_sprites(mlx, sprites);
+	load_player_sprites(mlx, sprites);
 	(*mlx)->sprites = *sprites;
 }
 
@@ -34,6 +35,27 @@ void	load_sprites(t_mlx **mlx, t_sprites **sprites)
 											&width, &height);
 	(*sprites)->exit_open = mlx_xpm_file_to_image((*mlx)->mlx_ptr, E0_PATH,
 											&width, &height);
-	(*sprites)->player = mlx_xpm_file_to_image((*mlx)->mlx_ptr, P0_PATH,
+}
+
+void	load_player_sprites(t_mlx **mlx, t_sprites **sprites)
+{
+	t_player	*player;
+	int			width;
+	int			height;
+
+	player= malloc(sizeof(t_player));
+	if (player == NULL)
+	{
+		ft_printf("Unable to load player data\n");
+		return ;
+	}
+	player->idle = mlx_xpm_file_to_image((*mlx)->mlx_ptr, P0_PATH,
 											&width, &height);
+	player->left = mlx_xpm_file_to_image((*mlx)->mlx_ptr, PL_PATH,
+											&width, &height);
+	player->right = mlx_xpm_file_to_image((*mlx)->mlx_ptr, PR_PATH,
+											&width, &height);
+	player->up = mlx_xpm_file_to_image((*mlx)->mlx_ptr, PU_PATH,
+											&width, &height);
+	(*sprites)->player = player;
 }
