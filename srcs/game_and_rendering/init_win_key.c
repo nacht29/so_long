@@ -6,6 +6,8 @@
 *generates a window if map is correct
 *
 *defines keybinds and controls in key_hook function
+*
+*copies map_data into mlx struct
 */
 void	init_win_key(t_mlx **mlx, char *map, t_map **map_data)
 {
@@ -19,6 +21,7 @@ void	init_win_key(t_mlx **mlx, char *map, t_map **map_data)
 		err_and_exit(mlx, "mlx window malloc error");
 	}
 	(*mlx)->map_data = *map_data;
+	// (*mlx)->sprites = 
 	mlx_hook((*mlx)->win_ptr, 2, 1L<<0, key_hook, *mlx);
 	mlx_hook((*mlx)->win_ptr, 17, 0, escape, *mlx);
 }

@@ -2,6 +2,8 @@
 
 /*
 *malloc a struct to store all sprites data (img ptrs)
+*
+*stores sprites data in mlx struct
 */
 void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites)
 {
@@ -13,6 +15,7 @@ void	init_sprites(t_mlx **mlx, t_map **map_data, t_sprites **sprites)
 		err_and_exit(mlx, "sprites malloc error");
 	}
 	load_sprites(mlx, sprites);
+	(*mlx)->sprites = *sprites;
 }
 
 /*

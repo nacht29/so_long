@@ -44,12 +44,13 @@
 
 typedef struct s_mlx_data
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	int				win_x;
-	int				win_y;
-	struct s_map	*map_data;
-	struct s_player	*player;
+	void				*mlx_ptr;
+	void				*win_ptr;
+	int					win_x;
+	int					win_y;
+	struct s_map		*map_data;
+	struct s_sprites	*sprites;
+	struct s_player		*player;
 }	t_mlx;
 
 typedef struct s_map
@@ -80,7 +81,9 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
-	void	*img;
+	void	*idle;
+	void	*left;
+	void	*right;
 	int		moves;
 }	t_player;
 
@@ -146,7 +149,7 @@ void	load_sprites(t_mlx **mlx, t_sprites **sprites);
 
 /*writing images to window*/
 
-void	write_img_to_win(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
+void	write_img_to_win(t_mlx *mlx, char **full_map, t_sprites *sprites);
 void	render(t_mlx *mlx, void *img, int wid, int hgt);
 // void	write_to_window(t_mlx *mlx, t_map *map_data, t_sprites *sprites);
 
@@ -156,10 +159,17 @@ void	render(t_mlx *mlx, void *img, int wid, int hgt);
 
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
+void	locate_player(t_mlx *mlx, int **player_loc);
+int		valid_movement(char **map_dup, int row, int col);
+void	move_up(t_mlx *mlx, int **player_loc);
+void	move_down(t_mlx *mlx, int **player_loc);
+void	move_left(t_mlx *mlx, int **player_loc);
+void	move_right(t_mlx *mlx, int **player_loc);
 
 /***********/
 /*MAIN GAME*/
 /***********/
 
 void	game(t_mlx **mlx, char *map, t_map **map_data);
+
 #endif
