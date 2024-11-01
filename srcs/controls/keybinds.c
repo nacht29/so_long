@@ -1,11 +1,5 @@
 #include "../../includes/so_long.h"
 
-/*
-*detects keyboard input and perform certain actions depending
-on the keycode received
-*
-*used in tandem with mlx_hook (so_long,c line 40)
-*/
 int	key_hook(int keycode, t_mlx *mlx)
 {
 	int	*player_loc;
@@ -15,27 +9,19 @@ int	key_hook(int keycode, t_mlx *mlx)
 		return (1);
 	player_loc[0] = 0;
 	player_loc[1] = 0;
-	if (keycode == ESC)
+	if (keycode == KEY_ESC)
 		escape(mlx);
-	if (keycode == UP || keycode == W)
+	if (keycode == KEY_UP || keycode == KEY_W)
 		move_up(mlx, &player_loc);
-	else if (keycode == DOWN || keycode == S)
+	else if (keycode == KEY_DOWN || keycode == KEY_S)
 		move_down(mlx, &player_loc);
-	else if (keycode == LEFT || keycode == A)
+	else if (keycode == KEY_LEFT || keycode == KEY_A)
 		move_left(mlx, &player_loc);
-	else if (keycode == RIGHT || keycode == D)
+	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(mlx, &player_loc);
-	free(player_loc);
 	return (0);
 }
 
-/*
-*closes window
-*
-*frees mlx struct and mlx_ptr
-*
-exits programme with code success
-*/
 int	escape(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);

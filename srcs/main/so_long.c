@@ -3,13 +3,11 @@
 int	main(int ac, char *av[])
 {
 	t_mlx	*mlx;
-	t_map	*map_data;
 
 	init_mlx(ac, av, &mlx);
-	init_map(&mlx, av[1], &map_data);
-	game(&mlx, av[1], &map_data);
+	init_map(&mlx, av[1]);
+	gameplay(&mlx);
 	mlx_loop(mlx->mlx_ptr);
-	free_map_data(&map_data);
 }
 
 void	init_mlx(int ac, char *av[], t_mlx **mlx)
@@ -30,18 +28,36 @@ void	init_mlx(int ac, char *av[], t_mlx **mlx)
 	(*mlx) = malloc(sizeof(t_mlx));
 	if ((*mlx) == NULL)
 		exit(EXIT_FAILURE);
+	(*mlx)->map_data = NULL;
+	(*mlx)->sprites = NULL;
 }
 
-/*
-*prints custom err msg
-*
-*frees mlx struct and mlx_ptr
-*
-*exit code failure
-*/
 void	err_and_exit(t_mlx **mlx, char *err_msg)
 {
 	ft_printf("%s\n", err_msg);
-	free_mlx_data(mlx);
+	free_mlx(mlx);
 	exit(EXIT_FAILURE);
+}
+
+void	free_mlx(t_mlx **mlx)
+{
+	int	i;
+
+	if ((*mlx)->map_data != NULL)
+	{
+		i = -1;
+		if ((*mlx)->map_data->full_map != NULL)
+		{
+			while ((*mlx)->map_data->full_map[++i])
+				free((*mlx)->map_data->full_map[i]);
+		}
+		free((*mlx)->map_data);
+	}
+	if ((*mlx)->sprites != NULL)
+	{
+		if ((*mlx)->sprites->player != NULL)
+			free((*mlx)->sprites->player);
+		free((*mlx)->sprites);
+	}
+	free(*mlx);
 }

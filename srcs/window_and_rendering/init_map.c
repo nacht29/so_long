@@ -11,37 +11,41 @@
 *
 *uses mlx_hook to read keyboard and mouse input
 */
-void	init_map(t_mlx **mlx, char *map, t_map **map_data)
+void	init_map(t_mlx **mlx, char *map)
 {
 	(*mlx)->mlx_ptr = mlx_init();
 	if ((*mlx)->mlx_ptr == NULL)
 		err_and_exit(mlx, "mlx malloc error");
+
+
 	(*mlx)->win_x = calc_x_size(map);
 	(*mlx)->win_y = calc_y_size(map);
+
+
 	if ((*mlx)->win_x <= 0 || (*mlx)->win_y <= 0)
 		err_and_exit(mlx, "Invalid map dimensions");
-	init_map_data(map_data, mlx);
-	(*map_data)->full_map = read_map(map, (*mlx)->win_y);
-	if (map_check((*map_data)->full_map, (*mlx)->win_y, map_data) == FALSE)
-	{
-		free_map_data(map_data);
-		err_and_exit(mlx, "Invalid map design");
-	}
+
+	init_map_data(mlx, map, (*mlx)->win_y);
+
+	if (map_check(mlx, (*mlx)->win_y) == FALSE)
+		err_and_exit(mlx, "Invalid map design\n");
 }
 
 /*
 *initiates struct to store map_data
 *will be used in map_check and flood_fill
 */
-void	init_map_data(t_map **map_data, t_mlx **mlx)
+void	init_map_data(t_mlx **mlx, char *map, int size_y)
 {
-	(*map_data) = malloc(sizeof(t_map));
+	t_map	*map_data;
+	map_data = malloc(sizeof(t_map));
 	if (map_data == NULL)
 		err_and_exit(mlx, "malloc error");
-	(*map_data)->full_map = NULL;
-	(*map_data)->player_count = 0;
-	(*map_data)->item_count = 0;
-	(*map_data)->exit_count = 0;
+	map_data->full_map = read_map(map, size_y);
+	map_data->player_count = 0;
+	map_data->item_count = 0;
+	map_data->exit_count = 0;
+	(*mlx)->map_data = map_data;
 }
 
 /*

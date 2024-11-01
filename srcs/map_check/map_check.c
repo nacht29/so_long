@@ -7,10 +7,12 @@
 *-if map contains valid characters only
 *-count and record number of elements
 */
-int	map_check(char **full_map, int size_y, t_map **map_data)
+int	map_check(t_mlx **mlx, int size_y)
 {
-	int	row;
+	char	**full_map;
+	int		row;
 
+	full_map = (*mlx)->map_data->full_map;
 	row = -1;
 	while (++row < size_y)
 	{
@@ -19,32 +21,68 @@ int	map_check(char **full_map, int size_y, t_map **map_data)
 			return (FALSE);
 		if (is_surrounded(row + 1, size_y, full_map[row]) == FALSE)
 			return (FALSE);
-		if (check_elements(row + 1, size_y, full_map[row], map_data) == FALSE)
+		if (check_count_elem(mlx, row + 1, size_y, full_map[row]) == FALSE)
 			return (FALSE);
 	}
-	return (valid_count(*map_data));
+	return (valid_count((*mlx)->map_data));
 }
 
 int	is_surrounded(int row, int size_y, char *line)
 {
+	size_t	end;
+
 	if (row == 1 || row == size_y)
-		return (check_top_bottom(line));
+	{
+		while (*line && *line == '1')
+			line++;
+		if (*line == '\0')
+			return (TRUE);
+		return (FALSE);
+	}
 	else
-		return (check_middle(line));
+	{
+		end = ft_strlen(line) - 1;
+		if (line[0] == '1' && line[end] == '1')
+			return (TRUE);
+		return (FALSE);
+	}
+}
+
+int	check_count_elem(t_mlx **mlx, int row, int size_y, char *line)
+{
+	if (row != 1 && row != size_y)
+	{
+		while (*line)
+		{
+			if (*line == 'P')
+				(*mlx)->map_data->player_count++;
+			else if (*line == 'C')
+				(*mlx)->map_data->item_count++;
+			else if (*line == 'E')
+				(*mlx)->map_data->exit_count++;
+			else if (*line != '0' && *line != '1')
+				return (FALSE);
+			line++;
+		}
+	}
+	return (TRUE);
 }
 
 /*
-*count elements will return FALSE if any invalid characters is found
+*checks if map contains the right amount of each element
+-P = 1
+-E = 1
+-C >= 1
 *
-*it is not to be confused with valid_count, as valid_count is the final check
-which verifies if a map contains the right amount of each element
-*
-*count_elemnts only checks for invalid characters and records the number of
-elements contained in the map
+*not to be confused with count_elements, as the function mainly records
+the number of each element found in the map, and returns FALSE if an 
+invalid char is found
 */
-int	check_elements(int row, int size_y, char *line, t_map **map_data)
+int	valid_count(t_map *map_data)
 {
-	if (row == 1 || row == size_y)
-		return (TRUE);
-	return (count_elements(map_data, line));
+	if (map_data->player_count != 1 || map_data->exit_count != 1)
+		return (FALSE);
+	if (map_data->item_count < 1)
+		return (FALSE);
+	return (TRUE);
 }

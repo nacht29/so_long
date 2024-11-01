@@ -13,17 +13,17 @@ CFLAGS = -g
 
 # OS settings
 ifeq ($(UNAME_S), Linux)
-    # Linux flags
-    MLX_DIR = mlx/
-    MLX = $(MLX_DIR)libmlx_Linux.a
-    MLX_FLAGS = -lmlx -L/usr/lib -lXext -lX11 -lm #-lmlx -lX11 -lXext -lm
+	# Linux flags
+	MLX_DIR = mlx/
+	MLX = $(MLX_DIR)libmlx_Linux.a
+	MLX_FLAGS = -lmlx -L/usr/lib -lXext -lX11 -lm #-lmlx -lX11 -lXext -lm
 else ifeq ($(UNAME_S), Darwin)
-    # macOS flags
-    MLX_DIR = mlx/
-    MLX = $(MLX_DIR)libmlx.a
-    MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	# macOS flags
+	MLX_DIR = mlx/
+	MLX = $(MLX_DIR)libmlx.a
+	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 else
-    $(error Unsupported OS: $(UNAME_S))
+	$(error Unsupported OS: $(UNAME_S))
 endif
 
 # Terminal Colors
@@ -70,7 +70,7 @@ clear:
 re: clear fclean all
 
 test:
-	./so_long assets/maps/valid/map_valid_2.ber
+	./so_long assets/maps/valid/map_valid_big.ber
 
 val:
 	valgrind ./so_long assets/maps/valid/map_valid_2.ber
