@@ -28,8 +28,10 @@
 #  define KEY_RIGHT 65363
 # endif
 
-# define TRUE 1
 # define FALSE 0
+# define TRUE 1
+# define SPEC 2
+# define GAME_OVER 3
 # define WALL '1'
 # define FLOOR '0'
 # define PLAYER 'P'
@@ -115,7 +117,7 @@ void	free_mlx(t_mlx **mlx);
 void	init_map(t_mlx **mlx, char *map);
 void	init_map_data(t_mlx **mlx, char *map, int size_y);
 char	**read_map(char *map, int size_y);
-void	free_mlx_data(t_mlx **mlx);
+void	free_mlx(t_mlx **mlx);
 
 /*checking map*/
 
@@ -141,7 +143,7 @@ void	load_sprites(t_mlx *mlx, t_sprites **sprites);
 
 /*putting img on window*/
 
-void	write_img_to_win(t_mlx *mlx, char **full_map, int side);
+void	write_img_to_win(t_mlx *mlx, char **full_map, int p_state, int e_state);
 
 /***********************/
 /*KEYBINDS AND CONTROLS*/
@@ -151,6 +153,7 @@ int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
 void	locate_player(t_mlx *mlx, int **player_loc);
 int		valid_movement(char **map_dup, int row, int col);
+int		remaining_item(char **map_dup);
 void	move_up(t_mlx *mlx, int **player_loc);
 void	move_down(t_mlx *mlx, int **player_loc);
 void	move_left(t_mlx *mlx, int **player_loc);

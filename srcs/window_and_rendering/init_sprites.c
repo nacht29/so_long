@@ -24,7 +24,9 @@ void	load_sprites(t_mlx *mlx, t_sprites **sprites)
 											&width, &height);
 	(*sprites)->item = mlx_xpm_file_to_image(mlx->mlx_ptr, C_PATH,
 											&width, &height);
-	(*sprites)->exit_open = mlx_xpm_file_to_image(mlx->mlx_ptr, E0_PATH,
+	(*sprites)->exit_close = mlx_xpm_file_to_image(mlx->mlx_ptr, E0_PATH,
+											&width, &height);
+	(*sprites)->exit_open = mlx_xpm_file_to_image(mlx->mlx_ptr, E1_PATH,
 											&width, &height);
 	load_player_sprites(mlx, sprites);
 }
