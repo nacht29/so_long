@@ -59,8 +59,7 @@ typedef struct s_mlx_data
 	void				*win_ptr;
 	int					win_x;
 	int					win_y;
-	int					p_x;
-	int					p_y;
+
 	char				**map_dup;
 	struct s_map		*map_data;
 	struct s_sprites	*sprites;
@@ -134,7 +133,8 @@ int		valid_count(t_map *map_data);
 
 /*setting up window*/
 void	init_win_key(t_mlx **mlx);
-int		flood_fill();
+void	flood_fill(t_mlx **mlx);
+void	fill(char ***map_dup, int row, int col, int size_x, int size_y);
 
 /*loading sprites*/
 

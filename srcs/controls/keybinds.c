@@ -6,7 +6,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 
 	player_loc = malloc(sizeof(int) * 2);
 	if (!player_loc)
-		return (1);
+		err_and_exit(&mlx, "Failed to load player\n");
 	player_loc[0] = 0;
 	player_loc[1] = 0;
 	if (keycode == KEY_ESC)
