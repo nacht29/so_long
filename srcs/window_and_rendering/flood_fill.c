@@ -7,8 +7,6 @@ static void	free_map_dup(char ***map_dup);
 void	flood_fill(t_mlx **mlx)
 {
 	int		*player_loc;
-	int		row;
-	int		col;
 	char	**map_dup;
 
 	map_dup = copy_map(*mlx);

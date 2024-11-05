@@ -60,3 +60,22 @@ int	remaining_item(char **map_dup)
 	}
 	return (item_count);
 }
+
+/*
+*prints end of game message depending on outcome
+*
+*since end_code is act_code, the else condition is added so that
+quit_game is triggered only when the act_code signifies end of game
+*
+*if not, the escape function will be called everytime, ignoring the act_code
+*/
+void	quit_game(t_mlx *mlx, int end_code)
+{
+	if (end_code == GAME_OVER)
+		ft_printf("Success!\n");
+	else if (end_code == GAME_LOST)
+		ft_printf("You suck :p\n");
+	else
+		return ;
+	escape(mlx);
+}

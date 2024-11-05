@@ -8,7 +8,7 @@ HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 CC = cc
-CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror -g
 # -Wall -Wextra -Werror
 
 # OS settings

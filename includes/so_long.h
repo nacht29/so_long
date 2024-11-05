@@ -152,6 +152,7 @@ void	write_img_to_win(t_mlx *mlx, char **full_map, int p_state, int e_state);
 
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
+void	quit_game(t_mlx *mlx, int end_code);
 void	locate_player(t_mlx *mlx, int **player_loc);
 int		valid_movement(char **map_dup, int row, int col);
 int		remaining_item(char **map_dup);
