@@ -32,6 +32,7 @@
 # define TRUE 1
 # define SPEC 2
 # define GAME_OVER 3
+# define GAME_LOST -4
 # define WALL '1'
 # define FLOOR '0'
 # define PLAYER 'P'
@@ -154,10 +155,10 @@ int		escape(t_mlx *mlx);
 void	locate_player(t_mlx *mlx, int **player_loc);
 int		valid_movement(char **map_dup, int row, int col);
 int		remaining_item(char **map_dup);
-void	move_up(t_mlx *mlx, int **player_loc);
-void	move_down(t_mlx *mlx, int **player_loc);
-void	move_left(t_mlx *mlx, int **player_loc);
-void	move_right(t_mlx *mlx, int **player_loc);
+void	move_up(t_mlx *mlx, int **player_loc, int *move_count);
+void	move_down(t_mlx *mlx, int **player_loc, int *move_count);
+void	move_left(t_mlx *mlx, int **player_loc, int *move_count);
+void	move_right(t_mlx *mlx, int **player_loc, int *move_count);
 
 /**********/
 /*GAMEPLAY*/

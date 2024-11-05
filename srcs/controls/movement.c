@@ -2,7 +2,7 @@
 
 static void	change_exit(char ***map_dup);
 
-void	move_up(t_mlx *mlx, int **player_loc)
+void	move_up(t_mlx *mlx, int **player_loc, int *move_count)
 {
 	char	**map_dup;
 	int		act_code;
@@ -20,9 +20,11 @@ void	move_up(t_mlx *mlx, int **player_loc)
 		write_img_to_win(mlx, map_dup, UP, TRUE);
 	else
 		write_img_to_win(mlx, map_dup, UP, FALSE);
+	(*move_count)++;
+	ft_printf("Steps taken: %i\n", *move_count);
 }
 
-void	move_down(t_mlx *mlx, int **player_loc)
+void	move_down(t_mlx *mlx, int **player_loc, int *move_count)
 {
 	char	**map_dup;
 	int		act_code;
@@ -40,9 +42,11 @@ void	move_down(t_mlx *mlx, int **player_loc)
 		write_img_to_win(mlx, map_dup, DOWN, TRUE);
 	else
 		write_img_to_win(mlx, map_dup, DOWN, FALSE);
+	(*move_count)++;
+	ft_printf("Steps taken: %i\n", *move_count);
 }
 
-void	move_left(t_mlx *mlx, int **player_loc)
+void	move_left(t_mlx *mlx, int **player_loc, int *move_count)
 {
 	char	**map_dup;
 	int		act_code;
@@ -60,9 +64,11 @@ void	move_left(t_mlx *mlx, int **player_loc)
 		write_img_to_win(mlx, map_dup, LEFT, TRUE);
 	else
 		write_img_to_win(mlx, map_dup, LEFT, FALSE);
+	(*move_count)++;
+	ft_printf("Steps taken: %i\n", *move_count);
 }
 
-void	move_right(t_mlx *mlx, int **player_loc)
+void	move_right(t_mlx *mlx, int **player_loc, int *move_count)
 {
 	char	**map_dup;
 	int		act_code;
@@ -80,4 +86,6 @@ void	move_right(t_mlx *mlx, int **player_loc)
 		write_img_to_win(mlx, map_dup, RIGHT, TRUE);
 	else
 		write_img_to_win(mlx, map_dup, RIGHT, FALSE);
+	(*move_count)++;
+	ft_printf("Steps taken: %i\n", *move_count);
 }
