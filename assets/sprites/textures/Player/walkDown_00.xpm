@@ -1,5 +1,5 @@
 /* XPM */
-static char *walkDown_00[] = {
+static char *walkDown_01[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 9 1 ",
 "  c #32313B",
@@ -12,6 +12,7 @@ static char *walkDown_00[] = {
 "# c #85DAEB",
 "$ c white",
 /* pixels */
+"................................",
 "................................",
 "................................",
 "...............#$...............",
@@ -39,9 +40,8 @@ static char *walkDown_00[] = {
 "..$$$$$XX$$$$$XX$ $XX$$$$$XX....",
 "..$$$$$OO$$$$$$$$ $$$$$$$$OO....",
 "..$$$$$OO $$$$$$   $$$$$$OOO....",
-"...$$$OOOO            XOOOOO....",
-"...oooOOOOOO         XOOOOOO....",
-"...oooOOOOOOOO      XOOOOOOO....",
-".........X   .......   X........",
-"........X   .........   X......."
+"...$$$OOOO             XOOOO....",
+"...oooOOOOOO          XOOOOO....",
+"...oooOOOOOOOO      XXOOOOOO....",
+"..........X          ..........."
 };
