@@ -27,9 +27,21 @@ void	write_img_to_win(t_mlx *mlx, char **full_map, int p_state, int e_state)
 			else if (full_map[row][col] == 'P')
 				player_movement(mlx, col, row, p_state);
 			else if (full_map[row][col] == 'X')
-				render(mlx, mlx->sprites->enemy->right_01, col, row);
+				render(mlx, mlx->sprites->enemy->down, col, row);
 		}
 	}	
+}
+
+/*
+*simplifies process of putting img to the window
+*runs mlx_put_image_to_window
+*/
+static void	render(t_mlx *mlx, void *img, int wid, int hgt)
+{
+	mlx_put_image_to_window(mlx->mlx_ptr,
+							mlx->win_ptr,
+							img, wid * 32,
+							hgt * 32);
 }
 
 static void	player_movement(t_mlx *mlx, int col, int row, int p_state)
@@ -44,16 +56,4 @@ static void	player_movement(t_mlx *mlx, int col, int row, int p_state)
 		render(mlx, mlx->sprites->player->idle, col, row);
 	else if (p_state == IDLE)
 		render(mlx, mlx->sprites->player->idle, col, row);
-}
-
-/*
-*simplifies process of putting img to the window
-*runs mlx_put_image_to_window
-*/
-static void	render(t_mlx *mlx, void *img, int wid, int hgt)
-{
-	mlx_put_image_to_window(mlx->mlx_ptr,
-							mlx->win_ptr,
-							img, wid * 32,
-							hgt * 32);
 }

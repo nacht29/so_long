@@ -45,6 +45,7 @@ void	init_map_data(t_mlx **mlx, char *map, int size_y)
 	map_data->player_count = 0;
 	map_data->item_count = 0;
 	map_data->exit_count = 0;
+	map_data->enemy_count = 0;
 	(*mlx)->map_data = map_data;
 }
 

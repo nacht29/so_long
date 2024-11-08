@@ -100,8 +100,8 @@ b-val:
 seg:
 	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valid/map_valid_2.ber
 
-b_seg:
-	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long_bonus assets/maps/valid/map_valid_2.ber
+b-seg:
+	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long_bonus assets/maps/valid_bonus/map_valid_2.ber
 
 FORCE:
 

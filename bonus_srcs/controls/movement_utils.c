@@ -28,16 +28,18 @@ int	valid_movement(char **map_dup, int row, int col)
 	int	item_count;
 
 	item_count = remaining_item(map_dup);
+	if (map_dup[row][col] == 'X')
+		return (GAME_LOST);
 	if (map_dup[row][col] == '1')
 		return (FALSE);
 	if (map_dup[row][col] == 'C' && item_count == 1)
-		return (SPEC);
+		return (EXIT_OPEN);
 	if (map_dup[row][col] == 'E' && item_count != 0)
 		return (FALSE);
 	else if (map_dup[row][col] == 'E' && item_count == 0)
 		return (GAME_OVER);
 	if (item_count == 0)
-		return (SPEC);
+		return (EXIT_OPEN);
 	return (TRUE);
 }
 

@@ -30,7 +30,7 @@
 
 # define FALSE 0
 # define TRUE 1
-# define SPEC 2
+# define EXIT_OPEN 2
 # define GAME_OVER 3
 # define GAME_LOST -4
 # define WALL '1'
@@ -43,18 +43,18 @@
 # define UP 130
 # define DOWN 140
 # define IDLE 141
-# define W_PATH "assets/sprites/textures/Tiles/block.xpm"
-# define F_PATH "assets/sprites/textures/Tiles/midBlocks_02.xpm"
-# define C_PATH "assets/sprites/textures/Items/star_00.xpm"
-# define E0_PATH "assets/sprites/textures/Exit/exit_close.xpm"
-# define E1_PATH "assets/sprites/textures/Exit/exit_open.xpm"
-# define PI_PATH "assets/sprites/textures/Player/walkDown_00.xpm"
-# define PU_PATH "assets/sprites/textures/Player/walkUP_00.xpm"
-# define PD_PATH "assets/sprites/textures/Player/walkDown_00.xpm"
-# define PL_PATH "assets/sprites/textures/Player/walkLeft_00.xpm"
-# define PR_PATH "assets/sprites/textures/Player/walkRight_00.xpm"
-# define XR0_PATH "assets/sprites/textures/Enemy/enemyR_00.xpm"
-# define XR1_PATH "assets/sprites/textures/Enemy/snake_tongue.xpm"
+# define W_PATH "assets/sprites/Tiles/block.xpm"
+# define F_PATH "assets/sprites/Tiles/midBlocks_02.xpm"
+# define C_PATH "assets/sprites/Items/star_00.xpm"
+# define E0_PATH "assets/sprites/Exit/exit_close.xpm"
+# define E1_PATH "assets/sprites/Exit/exit_open.xpm"
+# define PI_PATH "assets/sprites/Player/walkDown_00.xpm"
+# define PU_PATH "assets/sprites/Player/walkUP_00.xpm"
+# define PD_PATH "assets/sprites/Player/walkDown_00.xpm"
+# define PL_PATH "assets/sprites/Player/walkLeft_00.xpm"
+# define PR_PATH "assets/sprites/Player/walkRight_00.xpm"
+# define EN_UP "assets/sprites/Enemy/enemyR_00.xpm"
+# define EN_DOWN "assets/sprites/Enemy/enemy_down.xpm"
 
 typedef struct s_mlx_data
 {
@@ -75,6 +75,7 @@ typedef struct s_map
 	int				item_count;
 	int				collected;
 	int				exit_count;
+	int				enemy_count;
 	int				moves;
 	char			**full_map;
 }	t_map;
@@ -102,10 +103,10 @@ typedef struct s_player
 
 typedef struct	s_enemy
 {
-	void	*left_00;
-	void	*left_01;
-	void	*right_00;
-	void	*right_01;
+	void	*up;
+	void	*down;
+	void	*left;
+	void	*right;
 }	t_enemy;
 
 /*****************/
@@ -176,5 +177,14 @@ void	move_right(t_mlx *mlx, int **player_loc, int *move_count);
 /**********/
 
 void	gameplay(t_mlx **mlx);
+
+
+
+void	teleport_up(t_mlx **mlx, int *player_loc, int p_state, int e_state);
+void	teleport_down(t_mlx **mlx, int *player_loc, int p_state, int e_state);
+void	teleport_left(t_mlx **mlx, int *player_loc, int p_state, int e_state);
+void	teleport_right(t_mlx **mlx, int *player_loc, int p_state, int e_state);
+int	*locate_enemy(t_mlx *mlx);
+void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state, int e_state);
 
 #endif

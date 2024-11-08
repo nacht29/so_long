@@ -33,6 +33,8 @@ void	fill(char ***map_dup, int row, int col, int size_x, int size_y)
 		return ;
 	if ((*map_dup)[row][col] == '1' || (*map_dup)[row][col] == 'F')
 		return ;
+	if ((*map_dup)[row][col] == 'X')
+		return ;
 	if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) != 0)
 		return ;
 	(*map_dup)[row][col] = 'F';
