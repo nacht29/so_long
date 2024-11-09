@@ -16,13 +16,13 @@ void	init_mlx(int ac, char *av[], t_mlx **mlx)
 
 	if (ac != 2)
 	{
-		printf("Usage: ./so_long assets/maps/valid/<map_name>.ber\n");
+		ft_printf("Usage: ./so_long assets/maps/valid/<map_name>.ber\n");
 		exit(EXIT_FAILURE);
 	}
 	fd = open(av[1], O_RDONLY);
 	if (fd <= 0)
 	{
-		printf("Unable to locate or open file\n");
+		ft_printf("Unable to locate or open file\n");
 		exit(EXIT_FAILURE);
 	}
 	(*mlx) = malloc(sizeof(t_mlx));

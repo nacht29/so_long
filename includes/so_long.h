@@ -43,16 +43,16 @@
 # define UP 130
 # define DOWN 140
 # define IDLE 141
-# define W_PATH "assets/sprites/Tiles/block.xpm"
-# define F_PATH "assets/sprites/Tiles/midBlocks_02.xpm"
+# define W_PATH "assets/sprites/Tiles/floor.xpm"
+# define F_PATH "assets/sprites/Tiles/wall.xpm"
 # define C_PATH "assets/sprites/Items/star_00.xpm"
 # define E0_PATH "assets/sprites/Exit/exit_close.xpm"
 # define E1_PATH "assets/sprites/Exit/exit_open.xpm"
-# define PI_PATH "assets/sprites/Player/walkDown_00.xpm"
-# define PU_PATH "assets/sprites/Player/walkUP_00.xpm"
-# define PD_PATH "assets/sprites/Player/walkDown_00.xpm"
-# define PL_PATH "assets/sprites/Player/walkLeft_00.xpm"
-# define PR_PATH "assets/sprites/Player/walkRight_00.xpm"
+# define PI_PATH "assets/sprites/Player/player_down.xpm"
+# define PU_PATH "assets/sprites/Player/player_up.xpm"
+# define PD_PATH "assets/sprites/Player/player_down00.xpm"
+# define PL_PATH "assets/sprites/Player/player_left.xpm"
+# define PR_PATH "assets/sprites/Player/player_right.xpm"
 
 typedef struct s_mlx_data
 {
