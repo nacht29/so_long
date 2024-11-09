@@ -89,13 +89,13 @@ test:
 	./so_long assets/maps/valid/map_valid_2.ber
 
 b-test:
-	./so_long_bonus assets/maps/valid/map_valid_2.ber
+	./so_long_bonus assets/maps/valid_bonus/map_valid_2.ber
 
 val:
 	valgrind ./so_long assets/maps/valid/map_valid_2.ber
 
 b-val:
-	valgrind ./so_long_bonus assets/maps/valid/map_valid_2.ber
+	valgrind ./so_long_bonus assets/maps/valid_bonus/map_valid_2.ber
 
 seg:
 	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valid/map_valid_2.ber
