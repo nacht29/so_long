@@ -39,7 +39,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX)
 	@echo "\n$(YELLOW)Setting DISPLAY ENV...$(RESET)"
-	@# @echo "export DISPLAY=:0" >> ~/.bashrc
+	@echo "export DISPLAY=:0" >> ~/.bashrc
 	@echo "$(GREEN)DISPLAY ENV set to :0$(RESET)"
 	@echo "$(YELLOW)\nCompiling so_long executable...$(RESET)"
 	@$(CC) $(CFLAGS) $(SRCS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
