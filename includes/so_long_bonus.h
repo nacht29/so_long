@@ -44,16 +44,15 @@
 # define DOWN 140
 # define IDLE 141
 # define W_PATH "assets/sprites/Tiles/block.xpm"
-# define F_PATH "assets/sprites/Tiles/midBlocks_02.xpm"
+# define F_PATH "assets/sprites/Tiles/wall.xpm"
 # define C_PATH "assets/sprites/Items/star_00.xpm"
 # define E0_PATH "assets/sprites/Exit/exit_close.xpm"
 # define E1_PATH "assets/sprites/Exit/exit_open.xpm"
-# define PI_PATH "assets/sprites/Player/walkDown_00.xpm"
-# define PU_PATH "assets/sprites/Player/walkUP_00.xpm"
-# define PD_PATH "assets/sprites/Player/walkDown_00.xpm"
-# define PL_PATH "assets/sprites/Player/walkLeft_00.xpm"
-# define PR_PATH "assets/sprites/Player/walkRight_00.xpm"
-# define EN_UP "assets/sprites/Enemy/enemyR_00.xpm"
+# define PI_PATH "assets/sprites/Player/player_down.xpm"
+# define PU_PATH "assets/sprites/Player/player_up.xpm"
+# define PD_PATH "assets/sprites/Player/player_down00.xpm"
+# define PL_PATH "assets/sprites/Player/player_left.xpm"
+# define PR_PATH "assets/sprites/Player/player_right.xpm"
 # define EN_DOWN "assets/sprites/Enemy/enemy_down.xpm"
 
 typedef struct s_mlx_data
@@ -103,10 +102,7 @@ typedef struct s_player
 
 typedef struct	s_enemy
 {
-	void	*up;
 	void	*down;
-	void	*left;
-	void	*right;
 }	t_enemy;
 
 /*****************/
