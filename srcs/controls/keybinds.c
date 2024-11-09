@@ -11,7 +11,10 @@ int	key_hook(int keycode, t_mlx *mlx)
 	player_loc[0] = 0;
 	player_loc[1] = 0;
 	if (keycode == KEY_ESC)
+	{
+		free(player_loc);
 		escape(mlx);
+	}
 	if (keycode == KEY_UP || keycode == KEY_W)
 		move_up(mlx, &player_loc, &move_count);
 	else if (keycode == KEY_DOWN || keycode == KEY_S)

@@ -2,7 +2,7 @@
 
 static char	**copy_map(t_mlx *mlx);
 static int	find_exit(char **map_dup);
-static void	free_map_dup(char ***map_dup);
+static void	free_data(char ***map_dup, int **player_loc);
 
 void	flood_fill(t_mlx **mlx)
 {
@@ -13,18 +13,18 @@ void	flood_fill(t_mlx **mlx)
 	player_loc = malloc(sizeof(int) * 2);
 	if (!player_loc)
 	{
-		free_map_dup(&map_dup);
+		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Failed to load player\n");
 	}
 	locate_player(*mlx, &player_loc);
 	fill(&map_dup, player_loc[0], player_loc[1], (*mlx)->win_x, (*mlx)->win_y);
 	if (remaining_item(map_dup) != 0 || find_exit(map_dup) == FALSE)
 	{
-		free_map_dup(&map_dup);
+		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Invalid map design: "
 					"Item or exit inaccessible by player\n");
 	}
-	free_map_dup(&map_dup);
+	free_data(&map_dup, &player_loc);
 }
 
 void	fill(char ***map_dup, int row, int col, int size_x, int size_y)
@@ -76,10 +76,11 @@ static char	**copy_map(t_mlx *mlx)
 	row = -1;
 	while (map_sample[++row])
 		map_dup[row] = ft_strdup(map_sample[row]);
+	map_dup[row] = NULL;
 	return (map_dup);
 }
 
-static void	free_map_dup(char ***map_dup)
+static void	free_data(char ***map_dup, int **player_loc)
 {
 	int	row;
 
@@ -87,4 +88,5 @@ static void	free_map_dup(char ***map_dup)
 	while ((*map_dup)[++row])
 		free((*map_dup)[row]);
 	free(*map_dup);
+	free(*player_loc);
 }

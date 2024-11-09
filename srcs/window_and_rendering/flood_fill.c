@@ -74,6 +74,7 @@ static char	**copy_map(t_mlx *mlx)
 	row = -1;
 	while (map_sample[++row])
 		map_dup[row] = ft_strdup(map_sample[row]);
+	map_dup[row] = NULL;
 	return (map_dup);
 }
 
