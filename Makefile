@@ -89,7 +89,7 @@ test:
 	./so_long assets/maps/valid/map_valid_2.ber
 
 b-test:
-	./so_long_bonus assets/maps/valid_bonus/map_valid_2.ber
+	./so_long_bonus assets/maps/valid_bonus/map_valid_big.ber
 
 val:
 	valgrind ./so_long assets/maps/valid/map_valid_2.ber
