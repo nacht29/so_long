@@ -14,10 +14,7 @@ void	teleport_up(t_mlx **mlx, int *player_loc, int p_state, int e_state)
 		return ;
 	enemy_loc = locate_enemy(*mlx);
 	if (enemy_loc)
-	{
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
-		// free(enemy_loc);
-	}	
 	map_dup[p_row - 2][p_col] = 'X';
 	write_img_to_win(*mlx, map_dup, p_state, e_state);
 	free(enemy_loc);
@@ -39,10 +36,7 @@ void	teleport_down(t_mlx **mlx, int *player_loc, int p_state, int e_state)
 		return ;
 	enemy_loc = locate_enemy(*mlx);
 	if (enemy_loc)
-	{
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
-		// free(enemy_loc);
-	}	
 	map_dup[p_row + 2][p_col] = 'X';
 	write_img_to_win(*mlx, map_dup, p_state, e_state);
 	free(enemy_loc);
@@ -62,10 +56,7 @@ void	teleport_left(t_mlx **mlx, int *player_loc, int p_state, int e_state)
 		return ;
 	enemy_loc = locate_enemy(*mlx);
 	if (enemy_loc)
-	{
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
-		// free(enemy_loc);
-	}	
 	map_dup[p_row][p_col - 2] = 'X';
 	write_img_to_win(*mlx, map_dup, p_state, e_state);
 	free(enemy_loc);
@@ -85,10 +76,7 @@ void	teleport_right(t_mlx **mlx, int *player_loc, int p_state, int e_state)
 		return ;
 	enemy_loc = locate_enemy(*mlx);
 	if (enemy_loc)
-	{
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
-		// free(enemy_loc);
-	}
 	map_dup[p_row][p_col + 2] = 'X';
 	write_img_to_win(*mlx, map_dup, p_state, e_state);
 	free(enemy_loc);
