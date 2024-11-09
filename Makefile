@@ -11,8 +11,7 @@ HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 CC = cc
-CFLAGS =  -g
-# -Wall -Wextra -Werror
+CFLAGS =  -g -Wall -Wextra -Werror
 
 # OS settings
 ifeq ($(UNAME_S), Linux)
@@ -50,7 +49,7 @@ bonus: $(B_NAME)
 
 $(B_NAME): $(LIBFT) $(MLX)
 	@echo "\n$(YELLOW)Setting DISPLAY ENV...$(RESET)"
-	@# @echo "export DISPLAY=:0" >> ~/.bashrc
+	@echo "export DISPLAY=:0" >> ~/.bashrc
 	@echo "$(GREEN)DISPLAY ENV set to :0$(RESET)"
 	@echo "$(YELLOW)\nCompiling so_long_bonus executable...$(RESET)"
 	@$(CC) $(CFLAGS) $(B_SRCS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(B_NAME)
