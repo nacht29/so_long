@@ -51,6 +51,11 @@ int	is_surrounded(int row, int size_y, char *line)
 	}
 }
 
+/*
+*identify individual element present in the map and record their count
+*
+returns FALSE if an invalid element is found
+*/
 int	check_count_elem(t_mlx **mlx, int row, int size_y, char *line)
 {
 	if (row != 1 && row != size_y)
@@ -65,7 +70,7 @@ int	check_count_elem(t_mlx **mlx, int row, int size_y, char *line)
 				(*mlx)->map_data->exit_count++;
 			else if (*line == 'X')
 				(*mlx)->map_data->enemy_count++;
-			else if (*line != '0' && *line != '1' && *line != 'X')
+			else if (*line != '0' && *line != '1')
 				return (FALSE);
 			line++;
 		}
@@ -78,6 +83,7 @@ int	check_count_elem(t_mlx **mlx, int row, int size_y, char *line)
 -P = 1
 -E = 1
 -C >= 1
+-X = 1
 *
 *not to be confused with count_elements, as the function mainly records
 the number of each element found in the map, and returns FALSE if an 

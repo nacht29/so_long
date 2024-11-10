@@ -15,25 +15,24 @@ void	init_map(t_mlx **mlx, char *map)
 {
 	(*mlx)->mlx_ptr = mlx_init();
 	if ((*mlx)->mlx_ptr == NULL)
-		err_and_exit(mlx, "mlx malloc error");
-
-
+		err_and_exit(mlx, "Failed to load map\n");
 	(*mlx)->win_x = calc_x_size(map);
 	(*mlx)->win_y = calc_y_size(map);
-
-
 	if ((*mlx)->win_x <= 0 || (*mlx)->win_y <= 0)
-		err_and_exit(mlx, "Invalid map dimensions");
-
+		err_and_exit(mlx, "Invalid map dimensions\n");
 	init_map_data(mlx, map, (*mlx)->win_y);
-
 	if (map_check(mlx, (*mlx)->win_y) == FALSE)
 		err_and_exit(mlx, "Invalid map design\n");
 }
 
 /*
 *initiates struct to store map_data
-*will be used in map_check and flood_fill
+*
+*map data consists of:
+-full map in 2D array
+-number of each element
+*
+*will be used in map_check
 */
 void	init_map_data(t_mlx **mlx, char *map, int size_y)
 {
@@ -52,7 +51,7 @@ void	init_map_data(t_mlx **mlx, char *map, int size_y)
 /*
 *read from .ber file and store map design in 2D array
 *
-*will be used for map_check and flood_fill
+*will be used for map_check
 */
 char	**read_map(char *map, int size_y)
 {

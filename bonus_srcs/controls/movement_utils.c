@@ -1,5 +1,8 @@
 #include "../../includes/so_long_bonus.h"
-
+/*
+*finds the position of P in the map and return the data in an
+int array [row, col]
+*/
 void	locate_player(t_mlx *mlx, int **player_loc)
 {
 	char	**map_dup;
@@ -22,7 +25,15 @@ void	locate_player(t_mlx *mlx, int **player_loc)
 		}
 	}
 }
-
+/*
+*on key press, checks in step ahead of where the player is trying to move
+*
+*retruns an 'action code' to decide if:
+-player is allowed to move (wall, into enemy, exit)
+-game over conditions (into exit when items are collected or into enemy)
+*
+*action code is received by move_* func to execute specific commands
+*/
 int	valid_movement(char **map_dup, int row, int col)
 {
 	int	item_count;
@@ -43,6 +54,10 @@ int	valid_movement(char **map_dup, int row, int col)
 	return (TRUE);
 }
 
+/*
+*counts how many C are present in the map
+*used in both movement and flood_fill
+*/
 int	remaining_item(char **map_dup)
 {
 	int	row;
@@ -64,18 +79,13 @@ int	remaining_item(char **map_dup)
 }
 
 /*
-*prints end of game message depending on outcome
-*
-*since end_code is act_code, the else condition is added so that
-quit_game is triggered only when the act_code signifies end of game
-*
-*if not, the escape function will be called everytime, ignoring the act_code
+*exits game with a message when act_code signifies end of game
 */
-void	quit_game(t_mlx *mlx, int end_code)
+void	quit_game(t_mlx *mlx, int act_code)
 {
-	if (end_code == GAME_OVER)
+	if (act_code == GAME_OVER)
 		ft_printf("Success!\n");
-	else if (end_code == GAME_LOST)
+	else if (act_code == GAME_LOST)
 		ft_printf("You suck :p\n");
 	else
 		return ;
