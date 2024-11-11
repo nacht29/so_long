@@ -41,8 +41,8 @@ static void	render(t_mlx *mlx, void *img, int wid, int hgt)
 	mlx_put_image_to_window(mlx->mlx_ptr,
 							mlx->win_ptr,
 							img,
-							hgt * SIZE,
-							wid * SIZE);
+							wid * SIZE,
+							hgt * SIZE);
 }
 
 static void	player_movement(t_mlx *mlx, int col, int row, int p_state)

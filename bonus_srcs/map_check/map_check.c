@@ -22,10 +22,7 @@ int	map_check(t_mlx **mlx, int size_y)
 		if (is_surrounded(row + 1, size_y, full_map[row]) == FALSE)
 			return (FALSE);
 		if (check_count_elem(mlx, row + 1, size_y, full_map[row]) == FALSE)
-		{
-			printf("here\n");
 			return (FALSE);
-		}
 	}
 	return (valid_count((*mlx)->map_data));
 }

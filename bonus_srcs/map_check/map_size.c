@@ -24,7 +24,7 @@ int	calc_x_size(char *map)
 			break ;
 		if (ft_strchr(line, '\n') != NULL)
 			len = ft_strlen(line) - 1;
-		else
+		else if (ft_strchr(line, '\n') == NULL)
 			len = ft_strlen(line);
 		if (len != fixed_size)
 			return (-1);
@@ -32,6 +32,7 @@ int	calc_x_size(char *map)
 	}
 	return ((int)fixed_size);
 }
+
 /*
 *calculates the vertical dimension of the map
 *does not perform any checking whatsoever
