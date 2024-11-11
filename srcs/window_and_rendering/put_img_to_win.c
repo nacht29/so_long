@@ -52,6 +52,7 @@ static void	render(t_mlx *mlx, void *img, int wid, int hgt)
 {
 	mlx_put_image_to_window(mlx->mlx_ptr,
 							mlx->win_ptr,
-							img, wid * 32,
-							hgt * 32);
+							img,
+							wid * SIZE,
+							hgt * SIZE);
 }

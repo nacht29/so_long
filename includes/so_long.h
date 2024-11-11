@@ -28,6 +28,7 @@
 #  define KEY_RIGHT 65363
 # endif
 
+# define SIZE 50
 # define FALSE 0
 # define TRUE 1
 # define SPEC 2
@@ -43,8 +44,8 @@
 # define UP 130
 # define DOWN 140
 # define IDLE 141
-# define W_PATH "assets/sprites/Tiles/floor.xpm"
-# define F_PATH "assets/sprites/Tiles/wall.xpm"
+# define W_PATH "assets/sprites/Tiles/wall.xpm"
+# define F_PATH "assets/sprites/Tiles/floor.xpm"
 # define C_PATH "assets/sprites/Items/star_00.xpm"
 # define E0_PATH "assets/sprites/Exit/exit_close.xpm"
 # define E1_PATH "assets/sprites/Exit/exit_open.xpm"

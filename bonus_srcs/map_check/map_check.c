@@ -68,7 +68,10 @@ int	check_count_elem(t_mlx **mlx, int row, int size_y, char *line)
 			else if (*line == 'X')
 				(*mlx)->map_data->enemy_count++;
 			else if (*line != '0' && *line != '1')
+			{
+				printf("count elem\n");
 				return (FALSE);
+			}
 			line++;
 		}
 	}
@@ -93,8 +96,6 @@ int	valid_count(t_map *map_data)
 	if (map_data->enemy_count != 1 )
 		return (FALSE);
 	if (map_data->item_count < 1)
-		return (FALSE);
-	if (map_data->enemy_count < 1)
 		return (FALSE);
 	return (TRUE);
 }

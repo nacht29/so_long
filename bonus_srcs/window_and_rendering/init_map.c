@@ -19,10 +19,10 @@ void	init_map(t_mlx **mlx, char *map)
 	(*mlx)->win_x = calc_x_size(map);
 	(*mlx)->win_y = calc_y_size(map);
 	if ((*mlx)->win_x <= 0 || (*mlx)->win_y <= 0)
-		err_and_exit(mlx, "Invalid map dimensions\n");
+		err_and_exit(mlx, "Invalid map dimensions");
 	init_map_data(mlx, map, (*mlx)->win_y);
 	if (map_check(mlx, (*mlx)->win_y) == FALSE)
-		err_and_exit(mlx, "Invalid map design\n");
+		err_and_exit(mlx, "Invalid map design");
 }
 
 /*
