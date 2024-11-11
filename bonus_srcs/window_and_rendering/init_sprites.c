@@ -40,6 +40,8 @@ static void load_player_sprites(t_mlx *mlx, t_sprites **sprites)
 	int			height;
 
 	player = malloc(sizeof(t_player));
+	height = 0;
+	width = 0;
 	if (player == NULL)
 		err_and_exit(&mlx, "Failed to load player data\n");
 	player->idle = mlx_xpm_file_to_image(mlx->mlx_ptr, PI_PATH,

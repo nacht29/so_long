@@ -28,6 +28,7 @@
 #  define KEY_RIGHT 65363
 # endif
 
+# define SIZE 64
 # define FALSE 0
 # define TRUE 1
 # define EXIT_OPEN 2
