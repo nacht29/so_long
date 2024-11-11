@@ -97,5 +97,7 @@ int	valid_count(t_map *map_data)
 		return (FALSE);
 	if (map_data->item_count < 1)
 		return (FALSE);
+	if (map_data->enemy_count < 1)
+		return (FALSE);
 	return (TRUE);
 }

@@ -99,3 +99,8 @@ void	move_right(t_mlx *mlx, int **player_loc, int *move_count)
 	else
 		write_img_to_win(mlx, map_dup, RIGHT, FALSE);  
 }
+
+void	move(char ***map_dup, int row, int col)
+{
+	(*map_dup)[row][col] = 'P';
+}

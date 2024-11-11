@@ -142,7 +142,7 @@ int		valid_count(t_map *map_data);
 /*setting up window*/
 void	init_win_key(t_mlx **mlx);
 void	flood_fill(t_mlx **mlx);
-void	fill(char ***map_dup, int row, int col, int size_x, int size_y);
+void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit);
 
 /*loading sprites*/
 

@@ -25,6 +25,7 @@ void	locate_player(t_mlx *mlx, int **player_loc)
 		}
 	}
 }
+
 /*
 *on key press, checks in step ahead of where the player is trying to move
 *
