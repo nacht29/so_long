@@ -10,7 +10,7 @@ void	move_up(t_mlx *mlx, int **player_loc, int *move_count)
 	act_code = valid_movement(map_dup, (*player_loc)[0] - 1, (*player_loc)[1]);
 	if (act_code == FALSE)
 		return ;
-	else if (act_code == GAME_OVER || GAME_LOST)
+	else if (act_code == GAME_OVER || act_code == GAME_LOST)
 		quit_game(mlx, act_code);
 	(*move_count)++;
 	if (act_code == EXIT_OPEN)
@@ -35,7 +35,7 @@ void	move_down(t_mlx *mlx, int **player_loc, int *move_count)
 	act_code = valid_movement(map_dup, (*player_loc)[0] + 1, (*player_loc)[1]);
 	if (act_code == FALSE)
 		return ;
-	else if (act_code == GAME_OVER || GAME_LOST)
+	else if (act_code == GAME_OVER || act_code == GAME_LOST)
 		quit_game(mlx, act_code);
 	(*move_count)++;
 	if (act_code == EXIT_OPEN)
@@ -60,7 +60,7 @@ void	move_left(t_mlx *mlx, int **player_loc, int *move_count)
 	act_code = valid_movement(map_dup, (*player_loc)[0], (*player_loc)[1] - 1);
 	if (act_code == FALSE)
 		return ;
-	else if (act_code == GAME_OVER || GAME_LOST)
+	else if (act_code == GAME_OVER || act_code == GAME_LOST)
 		quit_game(mlx, act_code);
 	(*move_count)++;
 	if (act_code == EXIT_OPEN)
@@ -85,7 +85,7 @@ void	move_right(t_mlx *mlx, int **player_loc, int *move_count)
 	act_code = valid_movement(map_dup, (*player_loc)[0], (*player_loc)[1] + 1);
 	if (act_code == FALSE)
 		return ;
-	else if (act_code == GAME_OVER || GAME_LOST)
+	else if (act_code == GAME_OVER || act_code == GAME_LOST)
 		quit_game(mlx, act_code);
 	(*move_count)++;
 	if (act_code == EXIT_OPEN)
