@@ -16,10 +16,7 @@ void	init_map(t_mlx **mlx, char *map)
 	(*mlx)->mlx_ptr = mlx_init();
 	if ((*mlx)->mlx_ptr == NULL)
 		err_and_exit(mlx, "Failed to load map\n");
-	(*mlx)->win_x = calc_x_size(map);
-	(*mlx)->win_y = calc_y_size(map);
-	if ((*mlx)->win_x <= 0 || (*mlx)->win_y <= 0)
-		err_and_exit(mlx, "Invalid map dimensions");
+	(*mlx)->win_y = calc_col(map);
 	init_map_data(mlx, map, (*mlx)->win_y);
 	if (map_check(mlx, (*mlx)->win_y) == FALSE)
 		err_and_exit(mlx, "Invalid map design");
@@ -39,8 +36,11 @@ void	init_map_data(t_mlx **mlx, char *map, int size_y)
 	t_map	*map_data;
 	map_data = malloc(sizeof(t_map));
 	if (map_data == NULL)
-		err_and_exit(mlx, "malloc error");
+		err_and_exit(mlx, "Failed to load map");
 	map_data->full_map = read_map(map, size_y);
+	(*mlx)->win_x = calc_row(map_data->full_map, (*mlx)->win_y);
+	if ((*mlx)->win_x <= 0)
+		err_and_exit(mlx, "Failed to load map - x");
 	map_data->player_count = 0;
 	map_data->item_count = 0;
 	map_data->exit_count = 0;
@@ -68,7 +68,7 @@ char	**read_map(char *map, int size_y)
 	while (++row < size_y)
 	{
 		line = get_next_line(fd);
-		full_map[row] = ft_strtrim(line, "\n");
+		full_map[row] = ft_strtrim(line, "\n\t\r");
 		free(line);
 	}
 	full_map[size_y] = NULL;

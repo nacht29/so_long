@@ -41,11 +41,13 @@ void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit)
 		return ;
 	if ((*map_dup)[row][col] == 'X')
 		return ;
-	if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) != 0)
+	if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) == 0)
 	{
 		*exit = TRUE;
 		return ;
 	}
+	else if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) != 0)
+		return ;
 	(*map_dup)[row][col] = 'F';
 	fill(map_dup, row + 1, col, mlx, exit);
 	fill(map_dup, row - 1, col, mlx, exit);
