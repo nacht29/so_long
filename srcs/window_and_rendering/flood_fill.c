@@ -1,64 +1,58 @@
 #include "../../includes/so_long.h"
 
 static char	**copy_map(t_mlx *mlx);
-static int	find_exit(char **map_dup);
-static void	free_map_dup(char ***map_dup);
+static void	free_data(char ***map_dup, int **player_loc);
 
 void	flood_fill(t_mlx **mlx)
 {
 	int		*player_loc;
 	char	**map_dup;
+	int		exit;
 
 	map_dup = copy_map(*mlx);
 	player_loc = malloc(sizeof(int) * 2);
 	if (!player_loc)
 	{
-		free_map_dup(&map_dup);
+		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Failed to load player\n");
 	}
 	locate_player(*mlx, &player_loc);
-	fill(&map_dup, player_loc[0], player_loc[1], (*mlx)->win_x, (*mlx)->win_y);
-	if (remaining_item(map_dup) != 0 || find_exit(map_dup) == FALSE)
+	exit = FALSE;
+	fill(&map_dup, player_loc[0], player_loc[1], *mlx, &exit);
+	if (remaining_item(map_dup) != 0 || exit == FALSE)
 	{
-		free_map_dup(&map_dup);
+		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Invalid map design: "
 					"Item or exit inaccessible by player\n");
 	}
-	free_map_dup(&map_dup);
+	free_data(&map_dup, &player_loc);
 }
 
-void	fill(char ***map_dup, int row, int col, int size_x, int size_y)
+void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit)
 {
+	int	size_x;
+	int	size_y;
+
+	size_x = mlx->win_x;
+	size_y = mlx->win_y;
 	if (row < 0 || row >= size_y || col < 0 || col >= size_x)
 		return ;
 	if ((*map_dup)[row][col] == '1' || (*map_dup)[row][col] == 'F')
 		return ;
-	if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) != 0)
+	if ((*map_dup)[row][col] == 'X')
+		return ;
+	if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) == 0)
+	{
+		*exit = TRUE;
+		return ;
+	}
+	else if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) != 0)
 		return ;
 	(*map_dup)[row][col] = 'F';
-	
-	fill(map_dup, row + 1, col, size_x, size_y);
-	fill(map_dup, row - 1, col, size_x, size_y);
-	fill(map_dup, row, col + 1, size_x, size_y);
-	fill(map_dup, row, col - 1, size_x, size_y);
-}
-
-static int	find_exit(char **map_dup)
-{
-	int	row;
-	int	col;
-
-	row = -1;
-	while (map_dup[++row])
-	{
-		col = -1;
-		while (map_dup[row][++col])
-		{
-		 if (map_dup[row][col] == 'E' || map_dup[row][col] == 'P')
-		 	return (FALSE);
-		}
-	}
-	return (TRUE);
+	fill(map_dup, row + 1, col, mlx, exit);
+	fill(map_dup, row - 1, col, mlx, exit);
+	fill(map_dup, row, col + 1, mlx, exit);
+	fill(map_dup, row, col - 1, mlx, exit);
 }
 
 static char	**copy_map(t_mlx *mlx)
@@ -78,7 +72,7 @@ static char	**copy_map(t_mlx *mlx)
 	return (map_dup);
 }
 
-static void	free_map_dup(char ***map_dup)
+static void	free_data(char ***map_dup, int **player_loc)
 {
 	int	row;
 
@@ -86,4 +80,5 @@ static void	free_map_dup(char ***map_dup)
 	while ((*map_dup)[++row])
 		free((*map_dup)[row]);
 	free(*map_dup);
+	free(*player_loc);
 }

@@ -23,6 +23,10 @@ int	key_hook(int keycode, t_mlx *mlx)
 		move_left(mlx, &player_loc, &move_count);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(mlx, &player_loc, &move_count);
+	else
+		return (0);
+	show_steps(mlx, move_count);
+	ft_printf("Steps taken: %i\n", move_count);
 	return (0);
 }
 
@@ -33,4 +37,16 @@ int	escape(t_mlx *mlx)
 	free_mlx(&mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
+}
+
+void	show_steps(t_mlx *mlx, int step_count)
+{
+	char	*step;
+
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
+		12, 16, 0x00FFFFFF, "Steps: ");
+	step = ft_itoa(step_count);
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
+		50, 16, 0x00FFFFFF, step);
+	free(step);
 }

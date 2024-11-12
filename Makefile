@@ -4,9 +4,6 @@ UNAME_S := $(shell uname -s)
 NAME = so_long
 SRCS = $(wildcard srcs/*/*.c)
 
-B_NAME = so_long_bonus
-B_SRCS = $(wildcard bonus_srcs/*/*.c)
-
 HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
@@ -46,16 +43,6 @@ $(NAME): $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(SRCS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(AQUA)so_long executable compiled$(RESET)"
 
-bonus: $(B_NAME)
-
-$(B_NAME): $(LIBFT) $(MLX)
-	@echo "\n$(YELLOW)Setting DISPLAY ENV...$(RESET)"
-	@echo "export DISPLAY=:0" >> ~/.bashrc
-	@echo "$(GREEN)DISPLAY ENV set to :0$(RESET)"
-	@echo "$(YELLOW)\nCompiling so_long_bonus executable...$(RESET)"
-	@$(CC) $(CFLAGS) $(B_SRCS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(B_NAME)
-	@echo "$(AQUA)so_long_bonus executable compiled$(RESET)"
-
 $(LIBFT): FORCE
 	@echo "\n$(YELLOW)Compiling libft...$(RESET)"
 	@make -C $(LIBFT_DIR) -s
@@ -84,25 +71,14 @@ clear:
 
 re: clear fclean all
 
-bre: clear fclean bonus
-
 test:
-	./so_long assets/maps/valid/map_valid_2.ber
-
-b-test:
-	./so_long_bonus assets/maps/valid_bonus/map_valid_big.ber
+	./so_long assets/maps/valid_bonus/map_valid_2.ber
 
 val:
-	valgrind ./so_long assets/maps/valid/map_valid_2.ber
-
-b-val:
-	valgrind ./so_long_bonus assets/maps/valid_bonus/map_valid_2.ber
+	valgrind ./so_long assets/maps/valid_bonus/map_valid_2.ber
 
 seg:
-	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valid/map_valid_2.ber
-
-b-seg:
-	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long_bonus assets/maps/valid_bonus/map_valid_2.ber
+	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valid_bonus/map_valid_2.ber
 
 FORCE:
 

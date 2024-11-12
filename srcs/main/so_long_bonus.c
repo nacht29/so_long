@@ -57,6 +57,8 @@ void	free_mlx(t_mlx **mlx)
 	{
 		if ((*mlx)->sprites->player != NULL)
 			free((*mlx)->sprites->player);
+		if ((*mlx)->sprites->enemy != NULL)
+			free((*mlx)->sprites->enemy);
 		free((*mlx)->sprites);
 	}
 	free(*mlx);

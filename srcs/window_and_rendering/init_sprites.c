@@ -1,6 +1,7 @@
 #include "../../includes/so_long.h"
 
 static void load_player_sprites(t_mlx *mlx, t_sprites **sprites);
+static void	load_enemy_sprites(t_mlx *mlx, t_sprites **sprites);
 
 void	init_sprites(t_mlx **mlx)
 {
@@ -29,6 +30,7 @@ void	load_sprites(t_mlx *mlx, t_sprites **sprites)
 	(*sprites)->exit_open = mlx_xpm_file_to_image(mlx->mlx_ptr, E1_PATH,
 											&width, &height);
 	load_player_sprites(mlx, sprites);
+	load_enemy_sprites(mlx, sprites);
 }
 
 static void load_player_sprites(t_mlx *mlx, t_sprites **sprites)
@@ -38,17 +40,33 @@ static void load_player_sprites(t_mlx *mlx, t_sprites **sprites)
 	int			height;
 
 	player = malloc(sizeof(t_player));
+	height = 0;
+	width = 0;
 	if (player == NULL)
 		err_and_exit(&mlx, "Failed to load player data\n");
 	player->idle = mlx_xpm_file_to_image(mlx->mlx_ptr, PI_PATH,
-											&width, &height);
+										&width, &height);
 	player->up = mlx_xpm_file_to_image(mlx->mlx_ptr, PU_PATH,
-											&width, &height);
+										&width, &height);
 	player->down = mlx_xpm_file_to_image(mlx->mlx_ptr, PD_PATH,
-											&width, &height);
+										&width, &height);
 	player->left = mlx_xpm_file_to_image(mlx->mlx_ptr, PL_PATH,
-											&width, &height);
+										&width, &height);
 	player->right = mlx_xpm_file_to_image(mlx->mlx_ptr, PR_PATH,
-											&width, &height);
+										&width, &height);
 	(*sprites)->player = player;
+}
+
+static void	load_enemy_sprites(t_mlx *mlx, t_sprites **sprites)
+{
+	t_enemy		*enemy;
+	int			width;
+	int			height;
+
+	enemy = malloc(sizeof(t_player));
+	if (enemy == NULL)
+		err_and_exit(&mlx, "Failed to load enemy data\n");
+	enemy->down = mlx_xpm_file_to_image(mlx->mlx_ptr, EN_DOWN,
+										&width, &height);
+	(*sprites)->enemy = enemy;
 }

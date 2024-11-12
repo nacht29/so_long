@@ -4,7 +4,6 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <stdlib.h>
-# include <stdio.h>
 
 # ifdef __APPLE__
 #  define KEY_ESC 0x35
@@ -31,7 +30,7 @@
 # define SIZE 50
 # define FALSE 0
 # define TRUE 1
-# define SPEC 2
+# define EXIT_OPEN 2
 # define GAME_OVER 3
 # define GAME_LOST -4
 # define WALL '1'
@@ -54,6 +53,7 @@
 # define PD_PATH "assets/sprites/Player/player_down00.xpm"
 # define PL_PATH "assets/sprites/Player/player_left.xpm"
 # define PR_PATH "assets/sprites/Player/player_right.xpm"
+# define EN_DOWN "assets/sprites/Enemy/enemy_down.xpm"
 
 typedef struct s_mlx_data
 {
@@ -61,7 +61,6 @@ typedef struct s_mlx_data
 	void				*win_ptr;
 	int					win_x;
 	int					win_y;
-
 	char				**map_dup;
 	struct s_map		*map_data;
 	struct s_sprites	*sprites;
@@ -75,6 +74,7 @@ typedef struct s_map
 	int				item_count;
 	int				collected;
 	int				exit_count;
+	int				enemy_count;
 	int				moves;
 	char			**full_map;
 }	t_map;
@@ -87,6 +87,7 @@ typedef struct s_sprites
 	void			*exit_open;
 	void			*exit_close;
 	struct s_player	*player;
+	struct s_enemy	*enemy;	
 }	t_sprites;
 
 typedef struct s_player
@@ -98,6 +99,11 @@ typedef struct s_player
 	void	*right;
 	int		moves;
 }	t_player;
+
+typedef struct	s_enemy
+{
+	void	*down;
+}	t_enemy;
 
 /*****************/
 /*GETTING STARTED*/
@@ -122,8 +128,8 @@ void	free_mlx(t_mlx **mlx);
 
 /*checking map*/
 
-int		calc_x_size(char *map);
-int		calc_y_size(char *map);
+int		calc_row(char **map, int size_y);
+int		calc_col(char *map);
 int		map_check(t_mlx **mlx, int size_y);
 int		is_surrounded(int row, int size_y, char *line);
 int		check_count_elem(t_mlx **mlx, int row, int size_y, char *line);
@@ -136,7 +142,7 @@ int		valid_count(t_map *map_data);
 /*setting up window*/
 void	init_win_key(t_mlx **mlx);
 void	flood_fill(t_mlx **mlx);
-void	fill(char ***map_dup, int row, int col, int size_x, int size_y);
+void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit);
 
 /*loading sprites*/
 
@@ -153,7 +159,7 @@ void	write_img_to_win(t_mlx *mlx, char **full_map, int p_state, int e_state);
 
 int		key_hook(int keycode, t_mlx *mlx);
 int		escape(t_mlx *mlx);
-void	quit_game(t_mlx *mlx, int end_code);
+void	quit_game(t_mlx *mlx, int act_code);
 void	locate_player(t_mlx *mlx, int **player_loc);
 int		valid_movement(char **map_dup, int row, int col);
 int		remaining_item(char **map_dup);
@@ -166,6 +172,17 @@ void	move_right(t_mlx *mlx, int **player_loc, int *move_count);
 /*GAMEPLAY*/
 /**********/
 
-void	gameplay(t_mlx **mlx);
+/*main game*/
 
+void	gameplay(t_mlx **mlx);
+void	show_steps(t_mlx *mlx, int step_count);
+
+/*enemy movement*/
+
+void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+int		*locate_enemy(t_mlx *mlx);
+void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state, int e_state);
 #endif
