@@ -76,18 +76,16 @@ typedef struct s_mlx_data
 	char				**map_dup;
 	struct s_map		*map_data;
 	struct s_sprites	*sprites;
+	int					ex_state;
 }	t_mlx;
 
 typedef struct s_map
 {
-	int				map_x;
-	int				map_y;
 	int				player_count;
 	int				item_count;
 	int				collected;
 	int				exit_count;
 	int				enemy_count;
-	int				moves;
 	char			**full_map;
 }	t_map;
 
@@ -104,6 +102,8 @@ typedef struct s_sprites
 
 typedef struct s_player
 {
+	int		p_row;
+	int		p_col;
 	void	*idle;
 	void	*up;
 	void	*down;
@@ -153,7 +153,7 @@ int		valid_count(t_map *map_data);
 /*setting up window*/
 void	init_win_key(t_mlx **mlx);
 void	flood_fill(t_mlx **mlx);
-void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit);
+void	fill(char ***map_dup, int row, int col, t_mlx **mlx);
 
 /*loading sprites*/
 
@@ -190,10 +190,10 @@ void	show_steps(t_mlx *mlx, int step_count);
 
 /*enemy movement*/
 
-void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
-void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
-void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
-void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state);
+void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state);
+void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state);
+void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state);
 int		*locate_enemy(t_mlx *mlx);
-void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state, int e_state);
+void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state);
 #endif

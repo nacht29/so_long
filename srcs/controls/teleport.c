@@ -12,7 +12,7 @@
 
 #include "../../includes/so_long.h"
 
-void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state)
+void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state)
 {
 	int		p_row;
 	int		p_col;
@@ -26,10 +26,13 @@ void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int 
 	if (enemy_loc)
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
 	map_dup[p_row - 2][p_col] = 'X';
-	write_img_to_win(*mlx, map_dup, p_state, e_state);
+	if ((*mlx)->ex_state == EXIT_OPEN)
+		write_img_to_win(*mlx, map_dup, p_state, TRUE);
+	else
+		write_img_to_win(*mlx, map_dup, p_state, FALSE);
 }
 
-void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state)
+void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state)
 {
 	int		p_row;
 	int		p_col;
@@ -45,10 +48,13 @@ void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, in
 	if (enemy_loc)
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
 	map_dup[p_row + 2][p_col] = 'X';
-	write_img_to_win(*mlx, map_dup, p_state, e_state);
+	if ((*mlx)->ex_state == EXIT_OPEN)
+		write_img_to_win(*mlx, map_dup, p_state, TRUE);
+	else
+		write_img_to_win(*mlx, map_dup, p_state, FALSE);
 }
 
-void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state)
+void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state)
 {
 	int		p_row;
 	int		p_col;
@@ -62,10 +68,13 @@ void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, in
 	if (enemy_loc)
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
 	map_dup[p_row][p_col - 2] = 'X';
-	write_img_to_win(*mlx, map_dup, p_state, e_state);
+	if ((*mlx)->ex_state == EXIT_OPEN)
+		write_img_to_win(*mlx, map_dup, p_state, TRUE);
+	else
+		write_img_to_win(*mlx, map_dup, p_state, FALSE);
 }
 
-void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state)
+void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state)
 {
 	int		p_row;
 	int		p_col;
@@ -79,5 +88,8 @@ void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, i
 	if (enemy_loc)
 		map_dup[enemy_loc[0]][enemy_loc[1]] = '0';
 	map_dup[p_row][p_col + 2] = 'X';
-	write_img_to_win(*mlx, map_dup, p_state, e_state);
+	if ((*mlx)->ex_state == EXIT_OPEN)
+		write_img_to_win(*mlx, map_dup, p_state, TRUE);
+	else
+		write_img_to_win(*mlx, map_dup, p_state, FALSE);
 }

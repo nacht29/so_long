@@ -14,8 +14,7 @@
 
 static int	locate_utils(char **map_dup, int **enemy_loc);
 
-void	move_enemy(int exec, t_mlx *mlx, int *player_loc,
-					int p_state, int e_state)
+void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state)
 {
 	int	*enemy_loc;
 
@@ -25,13 +24,13 @@ void	move_enemy(int exec, t_mlx *mlx, int *player_loc,
 	if (exec % 3 != 0)
 		return ;
 	if (p_state == UP)
-		teleport_up(&mlx, player_loc, enemy_loc, p_state, e_state);
+		teleport_up(&mlx, player_loc, enemy_loc, p_state);
 	if (p_state == DOWN)
-		teleport_down(&mlx, player_loc, enemy_loc, p_state, e_state);
+		teleport_down(&mlx, player_loc, enemy_loc, p_state);
 	if (p_state == LEFT)
-		teleport_left(&mlx, player_loc, enemy_loc, p_state, e_state);
+		teleport_left(&mlx, player_loc, enemy_loc, p_state);
 	if (p_state == RIGHT)
-		teleport_right(&mlx, player_loc, enemy_loc, p_state, e_state);
+		teleport_right(&mlx, player_loc, enemy_loc, p_state);
 	free(enemy_loc);
 }
 

@@ -29,9 +29,9 @@ void	flood_fill(t_mlx **mlx)
 		err_and_exit(mlx, "Failed to load player\n");
 	}
 	locate_player(*mlx, &player_loc);
-	exit = FALSE;
-	fill(&map_dup, player_loc[0], player_loc[1], *mlx, &exit);
-	if (remaining_item(map_dup) != 0 || exit == FALSE)
+	(*mlx)->ex_state = FALSE;
+	fill(&map_dup, player_loc[0], player_loc[1], mlx);
+	if (remaining_item(map_dup) != 0 || (*mlx)->ex_state == FALSE)
 	{
 		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Invalid map design: "
@@ -40,13 +40,13 @@ void	flood_fill(t_mlx **mlx)
 	free_data(&map_dup, &player_loc);
 }
 
-void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit)
+void	fill(char ***map_dup, int row, int col, t_mlx **mlx)
 {
 	int	size_x;
 	int	size_y;
 
-	size_x = mlx->win_x;
-	size_y = mlx->win_y;
+	size_x = (*mlx)->win_x;
+	size_y = (*mlx)->win_y;
 	if (row < 0 || row >= size_y || col < 0 || col >= size_x)
 		return ;
 	if ((*map_dup)[row][col] == '1' || (*map_dup)[row][col] == 'F')
@@ -55,16 +55,16 @@ void	fill(char ***map_dup, int row, int col, t_mlx *mlx, int *exit)
 		return ;
 	if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) == 0)
 	{
-		*exit = TRUE;
+		(*mlx)->ex_state = TRUE;
 		return ;
 	}
 	else if ((*map_dup)[row][col] == 'E' && remaining_item(*map_dup) != 0)
 		return ;
 	(*map_dup)[row][col] = 'F';
-	fill(map_dup, row + 1, col, mlx, exit);
-	fill(map_dup, row - 1, col, mlx, exit);
-	fill(map_dup, row, col + 1, mlx, exit);
-	fill(map_dup, row, col - 1, mlx, exit);
+	fill(map_dup, row + 1, col, mlx);
+	fill(map_dup, row - 1, col, mlx);
+	fill(map_dup, row, col + 1, mlx);
+	fill(map_dup, row, col - 1, mlx);
 }
 
 static char	**copy_map(t_mlx *mlx)
