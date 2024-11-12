@@ -12,15 +12,13 @@
 
 #include "../../includes/so_long.h"
 
-static size_t	get_x(int fd);
-
 /*
 *calculates the horizontal dimension of the map
 *checks if each line in the .ber file has the same length 
 */
 int	calc_row(char **map, int size_y)
 {
-	size_t	row;
+	int		row;
 	size_t	fix_len;
 
 	row = 0;
@@ -56,18 +54,4 @@ int	calc_col(char *map)
 		line_count++;
 	}
 	return (line_count);
-}
-
-static size_t	get_x(int fd)
-{
-	char	*line;
-	size_t	len;
-
-	line = get_next_line(fd);
-	if (ft_strchr(line, '\n') != NULL)
-		len = ft_strlen(line) - 1;
-	else
-		len = ft_strlen(line);
-	free(line);
-	return (len);
 }

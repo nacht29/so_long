@@ -19,7 +19,6 @@ void	flood_fill(t_mlx **mlx)
 {
 	int		*player_loc;
 	char	**map_dup;
-	int		exit;
 
 	map_dup = copy_map(*mlx);
 	player_loc = malloc(sizeof(int) * 2);
