@@ -23,6 +23,8 @@ int	key_hook(int keycode, t_mlx *mlx)
 		move_left(mlx, &player_loc, &move_count);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move_right(mlx, &player_loc, &move_count);
+	else
+		return (0);
 	show_steps(mlx, move_count);
 	ft_printf("Steps taken: %i\n", move_count);
 	return (0);
