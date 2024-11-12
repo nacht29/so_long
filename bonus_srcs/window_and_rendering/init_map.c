@@ -40,7 +40,7 @@ void	init_map_data(t_mlx **mlx, char *map, int size_y)
 	map_data->full_map = read_map(map, size_y);
 	(*mlx)->win_x = calc_row(map_data->full_map, (*mlx)->win_y);
 	if ((*mlx)->win_x <= 0)
-		err_and_exit(mlx, "Failed to load map - x");
+		err_and_exit(mlx, "Failed to load map");
 	map_data->player_count = 0;
 	map_data->item_count = 0;
 	map_data->exit_count = 0;

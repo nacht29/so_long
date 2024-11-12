@@ -180,10 +180,10 @@ void	show_steps(t_mlx *mlx, int step_count);
 
 /*enemy movement*/
 
-void	teleport_up(t_mlx **mlx, int *player_loc, int p_state, int e_state);
-void	teleport_down(t_mlx **mlx, int *player_loc, int p_state, int e_state);
-void	teleport_left(t_mlx **mlx, int *player_loc, int p_state, int e_state);
-void	teleport_right(t_mlx **mlx, int *player_loc, int p_state, int e_state);
+void	teleport_up(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_down(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
+void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state, int e_state);
 int		*locate_enemy(t_mlx *mlx);
 void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state, int e_state);
 #endif
