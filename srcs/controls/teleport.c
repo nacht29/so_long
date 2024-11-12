@@ -74,7 +74,8 @@ void	teleport_left(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state)
 		write_img_to_win(*mlx, map_dup, p_state, FALSE);
 }
 
-void	teleport_right(t_mlx **mlx, int *player_loc, int *enemy_loc, int p_state)
+void	teleport_right(t_mlx **mlx, int *player_loc,
+						int *enemy_loc, int p_state)
 {
 	int		p_row;
 	int		p_col;

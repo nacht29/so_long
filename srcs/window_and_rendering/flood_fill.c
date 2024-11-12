@@ -35,7 +35,7 @@ void	flood_fill(t_mlx **mlx)
 	{
 		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Invalid map design: "
-			"Item or exit inaccessible by player\n");
+			"Item or exit inaccessible by player");
 	}
 	free_data(&map_dup, &player_loc);
 }
