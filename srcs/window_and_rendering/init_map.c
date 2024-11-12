@@ -29,6 +29,8 @@ void	init_map(t_mlx **mlx, char *map)
 	if ((*mlx)->mlx_ptr == NULL)
 		err_and_exit(mlx, "Failed to load map\n");
 	(*mlx)->win_y = calc_col(map);
+	if ((*mlx)->win_y <= 0)
+		err_and_exit(mlx, "Failed to load map\n");
 	init_map_data(mlx, map, (*mlx)->win_y);
 	if (map_check(mlx, (*mlx)->win_y) == FALSE)
 		err_and_exit(mlx, "Invalid map design");

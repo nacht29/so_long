@@ -109,7 +109,6 @@ typedef struct s_player
 	void	*down;
 	void	*left;
 	void	*right;
-	int		moves;
 }	t_player;
 
 typedef struct s_enemy
