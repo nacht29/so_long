@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_size.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:01:35 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 18:01:35 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 static size_t	get_x(int fd);
@@ -41,7 +53,7 @@ int	calc_col(char *map)
 		if (line == NULL)
 			break ;
 		free(line);
-	line_count++;
+		line_count++;
 	}
 	return (line_count);
 }

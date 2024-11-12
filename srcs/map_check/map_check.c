@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:01:32 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 18:01:32 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 /*
@@ -93,7 +105,7 @@ int	valid_count(t_map *map_data)
 {
 	if (map_data->player_count != 1 || map_data->exit_count != 1)
 		return (FALSE);
-	if (map_data->enemy_count > 1 )
+	if (map_data->enemy_count > 1)
 		return (FALSE);
 	if (map_data->item_count < 1)
 		return (FALSE);

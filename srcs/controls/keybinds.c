@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keybinds.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:38:11 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 17:38:11 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
+
+static void	escape_key(int keycode, t_mlx *mlx, int **player_loc);
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
@@ -10,11 +24,7 @@ int	key_hook(int keycode, t_mlx *mlx)
 		err_and_exit(&mlx, "Failed to load player\n");
 	player_loc[0] = 0;
 	player_loc[1] = 0;
-	if (keycode == KEY_ESC)
-	{
-		free(player_loc);
-		escape(mlx);
-	}
+	escape_key(keycode, mlx, &player_loc);
 	if (keycode == KEY_UP || keycode == KEY_W)
 		move_up(mlx, &player_loc, &move_count);
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
@@ -49,4 +59,15 @@ void	show_steps(t_mlx *mlx, int step_count)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
 		50, 16, 0x00FFFFFF, step);
 	free(step);
+}
+
+static void	escape_key(int keycode, t_mlx *mlx, int **player_loc)
+{
+	if (keycode == KEY_ESC)
+	{
+		free(*player_loc);
+		escape(mlx);
+	}
+	else
+		return ;
 }

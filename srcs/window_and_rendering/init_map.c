@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:02:28 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 18:02:28 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 /*
@@ -34,6 +46,7 @@ void	init_map(t_mlx **mlx, char *map)
 void	init_map_data(t_mlx **mlx, char *map, int size_y)
 {
 	t_map	*map_data;
+
 	map_data = malloc(sizeof(t_map));
 	if (map_data == NULL)
 		err_and_exit(mlx, "Failed to load map");

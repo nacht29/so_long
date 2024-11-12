@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_enemy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:38:22 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 17:38:22 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
-static int enemy_exi(char **map);
+static int	locate_utils(char **map_dup, int **enemy_loc);
 
-void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state, int e_state)
+void	move_enemy(int exec, t_mlx *mlx, int *player_loc,
+					int p_state, int e_state)
 {
 	int	*enemy_loc;
 
@@ -25,8 +38,6 @@ void	move_enemy(int exec, t_mlx *mlx, int *player_loc, int p_state, int e_state)
 int	*locate_enemy(t_mlx *mlx)
 {
 	int		*enemy_loc;
-	int		row;
-	int		col;
 	char	**map_dup;
 	int		flag;
 
@@ -34,6 +45,18 @@ int	*locate_enemy(t_mlx *mlx)
 	if (enemy_loc == NULL)
 		err_and_exit(&mlx, "Failed to load enemy data\n");
 	map_dup = mlx->map_data->full_map;
+	flag = locate_utils(map_dup, &enemy_loc);
+	if (flag == FALSE)
+		enemy_loc[0] = -1;
+	return (enemy_loc);
+}
+
+static int	locate_utils(char **map_dup, int **enemy_loc)
+{
+	int		row;
+	int		col;
+	int		flag;
+
 	row = -1;
 	flag = FALSE;
 	while (map_dup[++row])
@@ -43,14 +66,12 @@ int	*locate_enemy(t_mlx *mlx)
 		{
 			if (map_dup[row][col] == 'X')
 			{
-				enemy_loc[0] = row;
-				enemy_loc[1] = col;
+				(*enemy_loc)[0] = row;
+				(*enemy_loc)[1] = col;
 				flag = TRUE;
-				break;
+				break ;
 			}
 		}
 	}
-	if (flag == FALSE)
-		enemy_loc[0] = -1;
-	return (enemy_loc);
+	return (flag);
 }

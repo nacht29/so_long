@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:07:14 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 18:07:14 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -100,7 +112,7 @@ typedef struct s_player
 	int		moves;
 }	t_player;
 
-typedef struct	s_enemy
+typedef struct s_enemy
 {
 	void	*down;
 }	t_enemy;

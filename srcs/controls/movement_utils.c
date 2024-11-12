@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:38:26 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 17:38:26 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 /*
 *finds the position of P in the map and return the data in an
@@ -72,8 +84,8 @@ int	remaining_item(char **map_dup)
 		col = -1;
 		while (map_dup[row][++col])
 		{
-		 if (map_dup[row][col] == 'C')
-		 	item_count++;
+			if (map_dup[row][col] == 'C')
+				item_count++;
 		}
 	}
 	return (item_count);

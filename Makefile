@@ -8,8 +8,7 @@ HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 CC = cc
-CFLAGS =  -g
-# -Wall -Wextra -Werror
+CFLAGS =  -g #-Wall -Wextra -Werror
 
 # OS settings
 ifeq ($(UNAME_S), Linux)
@@ -72,7 +71,7 @@ clear:
 re: clear fclean all
 
 test:
-	./so_long assets/maps/valid_bonus/map_valid_2.ber
+	./so_long assets/maps/valid_bonus/map_valid_big.ber
 
 val:
 	valgrind ./so_long assets/maps/valid_bonus/map_valid_2.ber

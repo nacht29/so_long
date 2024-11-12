@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_img_to_win.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:02:32 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 18:02:32 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 static void	player_movement(t_mlx *mlx, int col, int row, int p_state);
@@ -39,10 +51,10 @@ void	write_img_to_win(t_mlx *mlx, char **full_map, int p_state, int e_state)
 static void	render(t_mlx *mlx, void *img, int wid, int hgt)
 {
 	mlx_put_image_to_window(mlx->mlx_ptr,
-							mlx->win_ptr,
-							img,
-							wid * SIZE,
-							hgt * SIZE);
+		mlx->win_ptr,
+		img,
+		wid * SIZE,
+		hgt * SIZE);
 }
 
 static void	player_movement(t_mlx *mlx, int col, int row, int p_state)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:02:26 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 18:02:26 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 static char	**copy_map(t_mlx *mlx);
@@ -23,7 +35,7 @@ void	flood_fill(t_mlx **mlx)
 	{
 		free_data(&map_dup, &player_loc);
 		err_and_exit(mlx, "Invalid map design: "
-					"Item or exit inaccessible by player\n");
+			"Item or exit inaccessible by player\n");
 	}
 	free_data(&map_dup, &player_loc);
 }

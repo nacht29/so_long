@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachan <yachan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:38:28 by yachan            #+#    #+#             */
+/*   Updated: 2024/11/12 17:38:28 by yachan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/so_long.h"
 
 void	move_up(t_mlx *mlx, int **player_loc, int *move_count)
@@ -72,7 +84,7 @@ void	move_left(t_mlx *mlx, int **player_loc, int *move_count)
 	if (act_code == EXIT_OPEN)
 		write_img_to_win(mlx, map_dup, LEFT, TRUE);
 	else
-		write_img_to_win(mlx, map_dup, LEFT, FALSE);  
+		write_img_to_win(mlx, map_dup, LEFT, FALSE);
 }
 
 void	move_right(t_mlx *mlx, int **player_loc, int *move_count)
@@ -97,7 +109,7 @@ void	move_right(t_mlx *mlx, int **player_loc, int *move_count)
 	if (act_code == EXIT_OPEN)
 		write_img_to_win(mlx, map_dup, RIGHT, TRUE);
 	else
-		write_img_to_win(mlx, map_dup, RIGHT, FALSE);  
+		write_img_to_win(mlx, map_dup, RIGHT, FALSE);
 }
 
 void	move(char ***map_dup, int row, int col)
