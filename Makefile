@@ -62,6 +62,7 @@ $(LIBFT): FORCE
 
 $(MLX): FORCE
 	@echo "\n$(YELLOW)Compiling minilibx...$(RESET)"
+	@chmod 777 mlx/configure
 	@make -C $(MLX_DIR) -s > /dev/null 2>&1
 	@echo "$(GREEN)minilibx compiled$(RESET)"
 
