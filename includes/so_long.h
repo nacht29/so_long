@@ -73,7 +73,6 @@ typedef struct s_mlx_data
 	void				*win_ptr;
 	int					win_x;
 	int					win_y;
-	char				**map_dup;
 	struct s_map		*map_data;
 	struct s_sprites	*sprites;
 	int					ex_state;
@@ -83,7 +82,6 @@ typedef struct s_map
 {
 	int				player_count;
 	int				item_count;
-	int				collected;
 	int				exit_count;
 	int				enemy_count;
 	char			**full_map;
@@ -102,8 +100,6 @@ typedef struct s_sprites
 
 typedef struct s_player
 {
-	int		p_row;
-	int		p_col;
 	void	*idle;
 	void	*up;
 	void	*down;
