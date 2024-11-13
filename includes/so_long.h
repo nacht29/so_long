@@ -135,8 +135,8 @@ void	free_mlx(t_mlx **mlx);
 
 /*checking map*/
 
-int		calc_row(char **map, int size_y);
-int		calc_col(char *map);
+int		calc_col(char **map, int size_y);
+int		calc_row(char *map);
 int		map_check(t_mlx **mlx, int size_y);
 int		is_surrounded(int row, int size_y, char *line);
 int		check_count_elem(t_mlx **mlx, int row, int size_y, char *line);

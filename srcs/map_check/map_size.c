@@ -16,7 +16,7 @@
 *calculates the horizontal dimension of the map
 *checks if each line in the .ber file has the same length 
 */
-int	calc_row(char **map, int size_y)
+int	calc_col(char **map, int size_y)
 {
 	int		row;
 	size_t	fix_len;
@@ -35,7 +35,7 @@ int	calc_row(char **map, int size_y)
 *calculates the vertical dimension of the map
 *does not perform any checking whatsoever
 */
-int	calc_col(char *map)
+int	calc_row(char *map)
 {
 	int		fd;
 	int		line_count;
