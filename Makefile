@@ -7,6 +7,7 @@ SRCS = $(wildcard srcs/*/*.c)
 HEADER = -Iincludes
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
+
 CC = cc
 CFLAGS =  -g -Wall -Wextra -Werror
 
@@ -55,7 +56,6 @@ $(MLX): FORCE
 clean:
 	@make clean -C $(LIBFT_DIR) -s
 	@make clean -C $(MLX_DIR) -s
-	@rm -rf $(OBJS_DIR)
 	@echo "$(PURPLE)clean successful$(RESET)"
 
 fclean: clean
@@ -79,6 +79,12 @@ val:
 seg:
 	valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 --leak-check=no ./so_long assets/maps/valid_bonus/map_valid_2.ber
 
+lvl1:
+	./so_long assets/maps/valid_bonus/map_valid_2.ber
+
+lvl2:
+	./so_long assets/maps/valid_bonus/map_valid_big.ber
+
 FORCE:
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re lvl1, lvl2
