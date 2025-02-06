@@ -1,6 +1,6 @@
 # so_long
 
-![Recording 2024-11-09 202656](https://github.com/user-attachments/assets/f32876b3-7e7b-4726-9fbf-d262b1eaa476)
+![Image](https://github.com/user-attachments/assets/03311a1c-c325-4517-8508-d5528b1ef02a)
 
 ## Introduction
 This is a simple 2D navigation game programmed in C, using the minilibx library. As the player, you must collect loots and escape the dungeon, with a phantom hot on pursuit. Beware of how you move, however, lest you meet your demise at the phantom's hands.
