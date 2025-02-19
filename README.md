@@ -18,6 +18,11 @@ This is a simple 2D navigation game programmed in C, using the minilibx library.
 ### Gameplay
 There are 2 levels in this game
 
+To compile the game:
+```bash
+make re
+```
+
 To play level 1:
 ```bash
 make lvl1
