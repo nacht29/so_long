@@ -13,7 +13,6 @@ This is a simple 2D navigation game programmed in C, using the minilibx library.
 
 1. **[Download XMing](https://sourceforge.net/projects/xming/)**, the GPU server needed for the graphics.
 2. Run ```bash setup.sh``` in your terminal.
-3. Enter 'Y' whenever prompted.
 
 ### Gameplay
 There are 2 levels in this game
