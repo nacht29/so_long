@@ -1,6 +1,6 @@
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt install libx11-dev
-sudo apt install libxext-dev
-sudo apt install libbsd-dev
-sudo apt install clang
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt install libx11-dev -y
+sudo apt install libxext-dev -y
+sudo apt install libbsd-dev -y
+sudo apt install clang -y
